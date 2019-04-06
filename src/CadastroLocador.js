@@ -9,7 +9,7 @@ class CadastroLocador extends Component {
     //Metodo que é executado após o componente ser rendenizado
   }
   handleDelete(e, i){
-    e.preventDefault;
+    //e.preventDefault;
 
   }
   PostLocador(){
