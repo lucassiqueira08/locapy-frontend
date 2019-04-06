@@ -3,49 +3,59 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery';
 import {ToastsContainer, ToastsStore} from 'react-toasts';
+import axios from 'axios';
 
 class CadastroLocador extends Component {
-  componentDidMount(){
-    //Metodo que é executado após o componente ser rendenizado
-  }
-  handleDelete(e, i){
-    //e.preventDefault;
-
-  }
-  PostLocador(){
-    // debugger;
-    var url = '/cadastro/locador';
+  
+  PostLocador(e){
+    e.preventDefault();
+    //debugger;
+    var url = 'http://localhost:8000/cadastro/locador/';
     var data = {};
-    data.nome_fantasia = $('#nome_fantasia').text();
-    data.razao_social = $('#razao_social').text();
-    data.inscricao_estadual = $('#inscricao_estadual').text();
-    data.cnpj = $('#cnpj').text();
-    data.endereco = $('#endereco').text();
-    data.telefone = $('#telefone').text();
-    data.perfil = $('#perfil').text();
+    var header = {
+      'Content-Type':'application/json',
+      'Access-Control-Allow-Origin':'http://localhost:3000'
+    }
 
-    console.log(data)
+    data.nome_fantasia = $('#nome_fantasia').val();
+    data.razao_social = $('#razao_social').val();
+    data.inscricao_estadual = $('#inscricao_estadual').val();
+    data.cnpj = $('#cnpj').val();
+    data.endereco = $('#endereco').val();
+    data.telefone = $('#telefone').val();
+    data.perfil = $('#perfil').val();
+    console.log(data);
+    //ToastsStore.success("Na teoria deu certo...")
 
-    ToastsStore.success("Hey, you just clicked!")
+
+    axios.post(url, data, header)
+    .then(function (response) {
+      ToastsStore.success(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
     // $.ajax({
     //   type: "POST",
     //   url: url,
     //   data: JSON.stringify(data),
     //   success: function(){
-    //     alert("Locador cadastrado com sucesso!")
+    //     ToastsStore.success("Locador cadastrado com sucesso!");
     //   },
     //   error: function(){
-    //     alert("Erro!")
+    //     ToastsStore.error("Erro!");
     //   },
     //   dataType: JSON
     // });
   }
-
+  componentDidMount(){
+    //Metodo que é executado após o componente ser rendenizado
+  }
   render() {
     return (
-      <div className="centro" onSubmit="this.preventDefault()">
-        <form className="formulario">
+      <form className="centro" type="POST">
+        <div className="formulario">
           <div className="form-group">
             <label htmlFor="nome_fantasia">Nome fantasia:</label>
             <input type="text" className="form-control" id="nome_fantasia" placeholder="Digite o nome fantasia..."/>
@@ -78,14 +88,13 @@ class CadastroLocador extends Component {
             <input type="checkbox" className="form-check-input" id=""/>
             <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
           </div>
-          <button type="submit" className="btn btn-primary" onClick ={this.PostLocador(this)}>Cadastrar</button>
-          <button   onClick={(e,i) => this.handleDelete(e,i)}>Click me</button>
-
+          <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocador(e)}>Cadastrar</button>
           <ToastsContainer store={ToastsStore}/>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
+  
 }
 
 export default CadastroLocador;
