@@ -16,15 +16,18 @@ class CadastroLocador extends Component {
     //debugger;
     //Valida campos vazios
     if(campos.nome_fantasia == '' ||
+    campos.razao_social == '' ||
     campos.inscricao_estadual == '' ||
     campos.cnpj == '' ||
+    campos.endereco == '' ||
+    campos.telefone == '' ||
     campos.perfil.usuario.username == '' ||
     campos.perfil.usuario.email == '' ||
     campos.perfil.usuario.password == '') {
       return {"isValid" : false, "msg" : "Todos os campos são obrigatórios!"};
     }
     if(campos.perfil.usuario.password.length < 8) {
-      return {"isValid" : false, "msg" : "A senha precisa ter mais de 8 dígitos!"};
+      return {"isValid" : false, "msg" : "A senha precisa ter pelo menos 8 dígitos!"};
     }
     return {"isValid" : true}
   }
