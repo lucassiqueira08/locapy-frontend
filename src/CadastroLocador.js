@@ -141,20 +141,20 @@ class CadastroLocador extends Component {
             <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..."/>
           </div>
           <div className="form-group">
-            <label htmlFor="Bairro">Bairro</label>
-            <input type="text" className="form-control" id="Bairro" placeholder="Digite o Bairro..."/>
+            <label htmlFor="bairro">Bairro</label>
+            <input type="text" className="form-control" id="bairro" placeholder="Digite o Bairro..."/>
           </div>
           <div className="form-group">
             <label htmlFor="Numero">Numero</label>
-            <input type="text" className="form-control" id="Numero" placeholder="Digite o Numero..."/>
+            <input type="text" className="form-control" id="numero" placeholder="Digite o Numero..."/>
           </div>
           <div className="form-group">
             <label htmlFor="Cidade">Cidade</label>
-            <input type="text" className="form-control" id="Cidade" placeholder="Digite a Cidade..."/>
+            <input type="text" className="form-control" id="cidade" placeholder="Digite a Cidade..."/>
           </div>
           <div className="form-group">
-            <label htmlFor="Estado">Estado</label>
-            <input type="text" className="form-control" id="Estado" placeholder="Digite o Estado..."/>
+            <label htmlFor="estado">Estado</label>
+            <input type="text" className="form-control" id="estado" placeholder="Digite o Estado..."/>
           </div>
           <div className="form-group">
             <label htmlFor="DataNasc">Data de Nascimento</label>
