@@ -66,8 +66,6 @@ class CadastroLocador extends Component {
           "password": $('#senha').val(),
       }
     }
-    debugger;
-    console.log(data)
     var CheckTermo =   $('#Termo').is(':checked');
     var valid = this.ValidaCampos(data);
     //Validação do termo.
