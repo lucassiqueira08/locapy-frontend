@@ -15,10 +15,10 @@ class CadastroLocador extends Component {
   ValidaCampos(campos){
     //debugger;
     //Valida campos vazios
-    if(campos.nome_fantasia == '' ||
-    campos.razao_social == '' ||
-    campos.inscricao_estadual == '' ||
-    campos.cnpj == '' ||
+    if(campos.nome == '' ||
+    campos.cpf == '' ||
+    
+    campos.cpf == '' ||
     campos.endereco == '' ||
     campos.telefone == '' ||
     campos.perfil.usuario.username == '' ||
@@ -45,17 +45,20 @@ class CadastroLocador extends Component {
   PostLocador(e){    
     e.preventDefault();
     // debugger;
-    var url = 'http://localhost:8000/cadastro/locador/';
+    var url = 'http://localhost:8000/cadastro/locatario/';
     var data = {};
     var header = {
       'Content-Type':"application/json",
     }
-    data.nome_fantasia = $('#nome_fantasia').val();
-    data.razao_social = $('#razao_social').val();
-    data.inscricao_estadual = $('#inscricao_estadual').val();
-    data.cnpj = $('#cnpj').val();
-    data.endereco = $('#endereco').val();
+    data.nome = $('#nome').val();
+    data.cpf = $('#cpf').val();
     data.telefone = $('#telefone').val();
+    data.logradouro = $('#logradouro').val();
+    data.numero = $('#numero').val();
+    data.bairro = $('#bairro').val();
+    data.cidade = $('#cidade').val();
+    data.estado = $('#estado').val();
+    data.data_nasc = $('#data_nasc').val();
     data.perfil = {
       "usuario": {
           "username":  $('#usuario').val(),
@@ -63,6 +66,8 @@ class CadastroLocador extends Component {
           "password": $('#senha').val(),
       }
     }
+    debugger;
+    console.log(data)
     var CheckTermo =   $('#Termo').is(':checked');
     var valid = this.ValidaCampos(data);
     //Validação do termo.
@@ -80,8 +85,8 @@ class CadastroLocador extends Component {
         var errorMessages = [];
         console.log(errorResponse);
         if(errorResponse.response.status == 400){
-          if(errorResponse.response.data.cnpj){
-            errorMessages.push("CNPJ: " + errorResponse.response.data.cnpj[0])
+          if(errorResponse.response.data.cpf){
+            errorMessages.push("cpf: " + errorResponse.response.data.cpf[0])
           }
           if(errorResponse.response.data.perfil.usuario.username){
             errorMessages.push("Username: " + errorResponse.response.data.perfil.usuario.username[0])
@@ -116,28 +121,44 @@ class CadastroLocador extends Component {
       <form className="centro" type="POST" id="formLocador"> 
         <div className="formulario">
           <div className="form-group">
-            <label htmlFor="nome_fantasia">Nome fantasia:</label>
-            <input type="text" className="form-control" id="nome_fantasia" placeholder="Digite o nome fantasia..." required/>
+            <label htmlFor="nome">Nome:</label>
+            <input type="text" className="form-control" id="nome" placeholder="Digite o nome..." required/>
           </div>
           <div className="form-group">
-            <label htmlFor="razao_social">Razão social</label>
-            <input type="text" className="form-control" id="razao_social" placeholder="Digite a razão social..." required/>
+            <label htmlFor="Rg">RG</label>
+            <input type="text" className="form-control" id="rg" placeholder="Digite a Rg..." required/>
           </div>
           <div className="form-group">
-            <label htmlFor="inscricao_estadual">Inscrição estadual</label>
-            <input type="text" className="form-control" id="inscricao_estadual" placeholder="Digite a inscrição estadual..." required/>
+            <label htmlFor="cpf">Cpf</label>
+            <input type="text" className="form-control" id="cpf" placeholder="Digite o Cpf..." required/>
           </div>
           <div className="form-group">
-            <label htmlFor="cnpj">cnpj</label>
-            <input type="text" className="form-control" id="cnpj" placeholder="Digite o cnpj..." required/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="endereco">Endereço</label>
-            <input type="text" className="form-control" id="endereco" placeholder="Digite o endereço..."/>
+            <label htmlFor="endereco">Logradouro</label>
+            <input type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
           </div>
           <div className="form-group">
             <label htmlFor="telefone">Telefone</label>
             <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..."/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="Bairro">Bairro</label>
+            <input type="text" className="form-control" id="Bairro" placeholder="Digite o Bairro..."/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="Numero">Numero</label>
+            <input type="text" className="form-control" id="Numero" placeholder="Digite o Numero..."/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="Cidade">Cidade</label>
+            <input type="text" className="form-control" id="Cidade" placeholder="Digite a Cidade..."/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="Estado">Estado</label>
+            <input type="text" className="form-control" id="Estado" placeholder="Digite o Estado..."/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="DataNasc">Data de Nascimento</label>
+            <input type="text" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..."/>
           </div>
           <div className="form-group">
             <label htmlFor="usuario">Usuário</label>
