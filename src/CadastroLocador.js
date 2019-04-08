@@ -31,6 +31,17 @@ class CadastroLocador extends Component {
     }
     return {"isValid" : true}
   }
+  ValidaTermo(termo){
+    
+    if (termo){
+      return {"isValid" : true};
+    }else{
+      return {"isValid" : false,  "msg" : "Você precisa aceitar o termo"};
+    }
+
+
+  }
+  
   PostLocador(e){    
     e.preventDefault();
     // debugger;
@@ -52,7 +63,11 @@ class CadastroLocador extends Component {
           "password": $('#senha').val(),
       }
     }
+    var CheckTermo =   $('#Termo').is(':checked');
     var valid = this.ValidaCampos(data);
+    //Validação do termo.
+    valid = this.ValidaTermo(CheckTermo); 
+
 
     if (valid.isValid){
       axios.post(url, data, header)
@@ -137,7 +152,7 @@ class CadastroLocador extends Component {
             <input type="password" className="form-control" id="senha" placeholder="Digite uma senha..." required/>
           </div>
           <div className="form-check">
-            <input type="checkbox" className="form-check-input" id=""/>
+            <input type="checkbox" className="form-check-input" id="Termo"/>
             <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
           </div>
           <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocador(e)}>Cadastrar</button>
