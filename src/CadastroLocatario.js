@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 toast.configure()
 
-class CadastroLocador extends Component {
+class CadastroLocatario extends Component {
   ValidaCampos(campos){
     //debugger;
     //Valida campos vazios
@@ -42,7 +42,7 @@ class CadastroLocador extends Component {
 
   }
   
-  PostLocador(e){    
+  PostLocatario(e){    
     e.preventDefault();
     // debugger;
     var url = 'http://localhost:8000/cadastro/locatario/';
@@ -75,8 +75,8 @@ class CadastroLocador extends Component {
     if (valid.isValid){
       axios.post(url, data, header)
       .then(response => { 
-        toast.success("Locador cadastrado com sucesso!");        
-        $('#formLocador').trigger("reset");
+        toast.success("Locatario cadastrado com sucesso!");        
+        $('#formLocatario').trigger("reset");
       })
       .catch(error => {
         var errorResponse = JSON.parse(JSON.stringify(error));
@@ -116,7 +116,7 @@ class CadastroLocador extends Component {
   }
   render() {
     return (
-      <form className="centro" type="POST" id="formLocador"> 
+      <form className="centro" type="POST" id="formLocatario"> 
         <div className="formulario">
           <div className="form-group">
             <label htmlFor="nome">Nome:</label>
@@ -174,7 +174,7 @@ class CadastroLocador extends Component {
             <input type="checkbox" className="form-check-input" id="Termo"/>
             <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
           </div>
-          <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocador(e)}>Cadastrar</button>
+          <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
         
         </div>
           <ToastContainer />
@@ -183,4 +183,4 @@ class CadastroLocador extends Component {
   }
 }
 
-export default CadastroLocador;
+export default CadastroLocatario;
