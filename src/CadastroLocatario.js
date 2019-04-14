@@ -114,6 +114,11 @@ class CadastroLocatario extends Component {
   componentWillMount(){
     //Metodo que é executado antes do componente ser rendenizado
   }
+  constructor()
+  {
+    super();
+    this.state = {lista: []};
+  }
   render() {
     return (
       <form className="centro" type="POST" id="formLocatario"> 
