@@ -4,6 +4,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 //JQUERY
 import $ from 'jquery';
+//JQUERY MASKS
+import InputMask from 'react-input-mask';
 //Componte de requests HTTPS
 import axios from 'axios';
 //Toast message
@@ -15,15 +17,16 @@ class CadastroLocador extends Component {
   ValidaCampos(campos){
     //debugger;
     //Valida campos vazios
-    if(campos.nome_fantasia == '' ||
-    campos.razao_social == '' ||
-    campos.inscricao_estadual == '' ||
-    campos.cnpj == '' ||
-    campos.endereco == '' ||
-    campos.telefone == '' ||
-    campos.perfil.usuario.username == '' ||
-    campos.perfil.usuario.email == '' ||
-    campos.perfil.usuario.password == '') {
+    if( campos.nome_fantasia == '' ||
+        campos.razao_social == '' ||
+        campos.inscricao_estadual == '' ||
+        campos.cnpj == '' ||
+        campos.endereco == '' ||
+        campos.telefone == '' ||
+        campos.usuario == '' ||
+        campos.email == '' ||
+        campos.senha == '' ||
+        campos.Termo == '') {
       return {"isValid" : false, "msg" : "Todos os campos são obrigatórios!"};
     }
     if(campos.perfil.usuario.password.length < 8) {
@@ -117,46 +120,46 @@ class CadastroLocador extends Component {
         <div className="formulario">
           <div className="form-group">
             <label htmlFor="nome_fantasia">Nome fantasia:</label>
-            <input type="text" className="form-control" id="nome_fantasia" placeholder="Digite o nome fantasia..." required/>
+            <InputMask className="form-control" guide={true}id="nome_fantasia" placeholder="Digite o nome fantasia..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="razao_social">Razão social</label>
-            <input type="text" className="form-control" id="razao_social" placeholder="Digite a razão social..." required/>
+            <InputMask className="form-control" guide={true}id="razao_social" placeholder="Digite a razão social..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="inscricao_estadual">Inscrição estadual</label>
-            <input type="text" className="form-control" id="inscricao_estadual" placeholder="Digite a inscrição estadual..." required/>
+            <InputMask className="form-control" guide={true}id="inscricao_estadual" placeholder="Digite a inscrição estadual..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="cnpj">cnpj</label>
-            <input type="text" className="form-control" id="cnpj" placeholder="Digite o cnpj..." required/>
+            <InputMask className="form-control" mask="99.999.999/9999-99" guide={true}id="cnpj" placeholder="Digite o cnpj..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="endereco">Endereço</label>
-            <input type="text" className="form-control" id="endereco" placeholder="Digite o endereço..."/>
+            <InputMask className="form-control" guide={true}id="endereco" placeholder="Digite o endereço..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="telefone">Telefone</label>
-            <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..."/>
+            <InputMask className="form-control" mask="(99)99999-9999" guide={true}id="telefone" placeholder="Digite o telefone..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="usuario">Usuário</label>
-            <input type="text" className="form-control" id="usuario" placeholder="Digite um nome de usuário..." required/>
+            <InputMask className="form-control" guide={true}id="usuario" placeholder="Digite um nome de usuário..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="email">E-mail</label>
-            <input type="email" className="form-control" id="email" placeholder="Digite seu e-mail..." required/>
+            <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite seu e-mail..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="senha">Senha</label>
-            <input type="password" className="form-control" id="senha" placeholder="Digite uma senha..." required/>
+            <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite uma senha..." required/>
           </div>
-          <div className="form-check">
-            <input type="checkbox" className="form-check-input" id="Termo"/>
+          <div className="form-checkid=">
+            <input type="checkbox" className="form-check-input" />
             <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
           </div>
           <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocador(e)}>Cadastrar</button>
-        
+          
         </div>
           <ToastContainer />
       </form>
