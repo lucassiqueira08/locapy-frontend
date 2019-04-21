@@ -130,6 +130,7 @@ class CadastroLocatario extends Component {
   }
   handleSuccess(cepData) {
     console.log(cepData);
+    //Setar os dados do viaCep nos campos corretos
     this.setState({cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
 
 
