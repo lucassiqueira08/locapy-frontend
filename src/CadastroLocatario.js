@@ -9,6 +9,7 @@ import axios from 'axios';
 //Toast message
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import InputMask from 'react-input-mask';
 import ViaCep from '../dist';
 toast.configure()
 
@@ -43,6 +44,18 @@ class CadastroLocatario extends Component {
 
   }
   
+  ComparaSenha(senha,senha2){
+      if(senha == senha2)
+      {
+        return {"isValid" : true};
+
+      }else{
+        return {"isValid" : false,  "msg" :"A senhas digitadas são diferentes"};
+      }
+
+
+  }
+  
   PostLocatario(e){    
     e.preventDefault();
     // debugger;
@@ -68,11 +81,19 @@ class CadastroLocatario extends Component {
       }
     }
     var CheckTermo =   $('#Termo').is(':checked');
+    var senha = $('#senha').val();
+    var senha2 = $('#ConfirmaSenha').val();
     var valid = this.ValidaCampos(data);
+
+
+ if (valid.isValid){
+    valid = this.ComparaSenha(senha,senha2);
+ }
     //Validação do termo.
+    if (valid.isValid){
     valid = this.ValidaTermo(CheckTermo); 
 
-
+    }
     if (valid.isValid){
       axios.post(url, data, header)
       .then(response => { 
@@ -83,19 +104,23 @@ class CadastroLocatario extends Component {
         var errorResponse = JSON.parse(JSON.stringify(error));
         var errorMessages = [];
         console.log(errorResponse);
-        if(errorResponse.response.status == 400){
+        console.log(errorResponse.response.data);
+        if(errorResponse.response.status == '400'){
           if(errorResponse.response.data.cpf){
-            errorMessages.push("cpf: " + errorResponse.response.data.cpf[0])
+            errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
+         
           }
           if(errorResponse.response.data.perfil.usuario.username){
-            errorMessages.push("Username: " + errorResponse.response.data.perfil.usuario.username[0])
+            errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);
+           
           }
           if(errorResponse.response.data.perfil.usuario.email){
-            errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0])
+            errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
+           
           }
         }
         else if(errorResponse.response.status == 500){
-          errorMessages.push("Erro interno no servidor...")
+          errorMessages.push("Erro interno no servidor...");
         }
         errorMessages.forEach(element => {
           toast.error(element);
@@ -130,7 +155,7 @@ class CadastroLocatario extends Component {
   }
   handleSuccess(cepData) {
     console.log(cepData);
-    //Setar os dados do viaCep nos campos corretos
+    //Setar os dados do viaCep nos campos.
     this.setState({cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
 
 
@@ -142,23 +167,23 @@ class CadastroLocatario extends Component {
         <div className="formulario">
           <div className="form-group">
             <label htmlFor="nome">Nome:</label>
-            <input type="text" className="form-control" id="nome" placeholder="Digite o nome..." required/>
+            <InputMask type="text" className="form-control" id="nome" placeholder="Digite o nome..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="Rg">RG</label>
-            <input type="text" className="form-control" id="rg" placeholder="Digite a Rg..." required/>
+            <InputMask type="text" className="form-control" id="rg" placeholder="Digite a Rg..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="cpf">Cpf</label>
-            <input type="text" className="form-control" id="cpf" placeholder="Digite o Cpf..." required/>
+            <InputMask type="text" mask="999.999.999-99" guide={true} className="form-control" id="cpf" placeholder="Digite o Cpf..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="endereco">Logradouro</label>
-            <input type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
+            <InputMask type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
           </div>
           <div className="form-group">
             <label htmlFor="telefone">Telefone</label>
-            <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..."/>
+            <InputMask type="text" mask="(99)99999-9999" guide={true} className="form-control" id="telefone" placeholder="Digite o telefone..."/>
           </div>
           <div className="form-group">
           <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
@@ -168,8 +193,8 @@ class CadastroLocatario extends Component {
             }
            
             return<div className="form-group">
-            
-              <input className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
+              <label htmlFor="CepLabel">Cep</label>
+              <InputMask className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
      
             </div>
           }}
@@ -177,35 +202,39 @@ class CadastroLocatario extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="bairro">Bairro</label>
-            <input type="text" className="form-control" value={this.state.bairro}  id="bairro" placeholder="Digite o Bairro..."/>
+            <InputMask type="text" className="form-control" value={this.state.bairro}  id="bairro" placeholder="Digite o Bairro..."/>
           </div>
           <div className="form-group">
             <label htmlFor="Numero">Numero</label>
-            <input type="text" className="form-control"  id="numero" placeholder="Digite o Numero..."/>
+            <InputMask type="text" className="form-control"  id="numero" placeholder="Digite o Numero..."/>
           </div>
           <div className="form-group">
             <label htmlFor="Cidade">Cidade</label>
-            <input type="text" className="form-control" value= {this.state.cidade} id="cidade" placeholder="Digite a Cidade..."/>
+            <InputMask type="text" className="form-control" value= {this.state.cidade} id="cidade" placeholder="Digite a Cidade..."/>
           </div>
           <div className="form-group">
             <label htmlFor="estado">Estado</label>
-            <input type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>
+            <InputMask type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>
           </div>
           <div className="form-group">
             <label htmlFor="DataNasc">Data de Nascimento</label>
-            <input type="text" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..."/>
+            <InputMask type="date" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..."/>
           </div>
           <div className="form-group">
             <label htmlFor="usuario">Usuário</label>
-            <input type="text" className="form-control" id="usuario" placeholder="Digite um nome de usuário..." required/>
+            <InputMask type="text" className="form-control" id="usuario" placeholder="Digite um nome de usuário..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="email">E-mail</label>
-            <input type="email" className="form-control" id="email" placeholder="Digite seu e-mail..." required/>
+            <InputMask type="email"  className="form-control" id="email" placeholder="Digite seu e-mail..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="senha">Senha</label>
             <input type="password" className="form-control" id="senha" placeholder="Digite uma senha..." required/>
+          </div>
+          <div className="form-group">
+            <label htmlFor="senha">Confirme a senha</label>
+            <input type="password" className="form-control" id="ConfirmaSenha" placeholder="Digite uma senha..." required/>
           </div>
           <div className="form-check">
             <input type="checkbox" className="form-check-input" id="Termo"/>
