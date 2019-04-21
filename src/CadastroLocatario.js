@@ -64,9 +64,12 @@ class CadastroLocatario extends Component {
     var header = {
       'Content-Type':"application/json",
     }
+
+
     data.nome = $('#nome').val();
-    data.cpf = $('#cpf').val();
-    data.telefone = $('#telefone').val();
+    data.cpf = $('#cpf').val().replace(/[\.-]/g, "");
+    console.log( data.cpf);
+    data.telefone = $('#telefone').val().replace(/[\(\)\.\s-]+/g,"");
     data.logradouro = $('#logradouro').val();
     data.numero = $('#numero').val();
     data.bairro = $('#bairro').val();
@@ -128,6 +131,7 @@ class CadastroLocatario extends Component {
       });
     }
     else{
+      this.setState({cidade:'',bairro:'', estado: ''}).bind(this);
       toast.error(valid.msg);
     }
   }
