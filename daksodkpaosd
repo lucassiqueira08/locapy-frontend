@@ -1,0 +1,243 @@
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex 3223758..a85c9bc 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -6430,8 +6430,7 @@[m
+         },[m
+         "ansi-regex": {[m
+           "version": "2.1.1",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "aproba": {[m
+           "version": "1.2.0",[m
+[36m@@ -6468,8 +6467,7 @@[m
+         },[m
+         "code-point-at": {[m
+           "version": "1.1.0",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "concat-map": {[m
+           "version": "0.0.1",[m
+[36m@@ -6478,8 +6476,7 @@[m
+         },[m
+         "console-control-strings": {[m
+           "version": "1.1.0",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "core-util-is": {[m
+           "version": "1.0.2",[m
+[36m@@ -6582,8 +6579,7 @@[m
+         },[m
+         "inherits": {[m
+           "version": "2.0.3",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "ini": {[m
+           "version": "1.3.5",[m
+[36m@@ -6593,7 +6589,6 @@[m
+         "is-fullwidth-code-point": {[m
+           "version": "1.0.0",[m
+           "bundled": true,[m
+[31m-          "optional": true,[m
+           "requires": {[m
+             "number-is-nan": "^1.0.0"[m
+           }[m
+[36m@@ -6613,13 +6608,11 @@[m
+         },[m
+         "minimist": {[m
+           "version": "0.0.8",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "minipass": {[m
+           "version": "2.2.4",[m
+           "bundled": true,[m
+[31m-          "optional": true,[m
+           "requires": {[m
+             "safe-buffer": "^5.1.1",[m
+             "yallist": "^3.0.0"[m
+[36m@@ -6636,7 +6629,6 @@[m
+         "mkdirp": {[m
+           "version": "0.5.1",[m
+           "bundled": true,[m
+[31m-          "optional": true,[m
+           "requires": {[m
+             "minimist": "0.0.8"[m
+           }[m
+[36m@@ -6709,8 +6701,7 @@[m
+         },[m
+         "number-is-nan": {[m
+           "version": "1.0.1",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "object-assign": {[m
+           "version": "4.1.1",[m
+[36m@@ -6720,7 +6711,6 @@[m
+         "once": {[m
+           "version": "1.4.0",[m
+           "bundled": true,[m
+[31m-          "optional": true,[m
+           "requires": {[m
+             "wrappy": "1"[m
+           }[m
+[36m@@ -6796,8 +6786,7 @@[m
+         },[m
+         "safe-buffer": {[m
+           "version": "5.1.1",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "safer-buffer": {[m
+           "version": "2.1.2",[m
+[36m@@ -6827,7 +6816,6 @@[m
+         "string-width": {[m
+           "version": "1.0.2",[m
+           "bundled": true,[m
+[31m-          "optional": true,[m
+           "requires": {[m
+             "code-point-at": "^1.0.0",[m
+             "is-fullwidth-code-point": "^1.0.0",[m
+[36m@@ -6845,7 +6833,6 @@[m
+         "strip-ansi": {[m
+           "version": "3.0.1",[m
+           "bundled": true,[m
+[31m-          "optional": true,[m
+           "requires": {[m
+             "ansi-regex": "^2.0.0"[m
+           }[m
+[36m@@ -6884,13 +6871,11 @@[m
+         },[m
+         "wrappy": {[m
+           "version": "1.0.2",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         },[m
+         "yallist": {[m
+           "version": "3.0.2",[m
+[31m-          "bundled": true,[m
+[31m-          "optional": true[m
+[32m+[m[32m          "bundled": true[m
+         }[m
+       }[m
+     },[m
+[36m@@ -13241,6 +13226,11 @@[m
+         "react-lifecycles-compat": "^3.0.4"[m
+       }[m
+     },[m
+[32m+[m[32m    "react-via-cep": {[m
+[32m+[m[32m      "version": "2.0.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/react-via-cep/-/react-via-cep-2.0.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-32EFv3yP5yXMMKQshakKO3eEETnSEgQrBVncWtbcNIfTOV/maJIRgXYWVC67yw5doxqzsRVpQUi1nr+ZBOrVOQ=="[m
+[32m+[m[32m    },[m
+     "read-pkg": {[m
+       "version": "1.1.0",[m
+       "resolved": "https://registry.npmjs.org/read-pkg/-/read-pkg-1.1.0.tgz",[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex b667446..5f93358 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -13,7 +13,8 @@[m
+     "react-router-dom": "^5.0.0",[m
+     "react-scripts": "2.1.8",[m
+     "react-toastify": "^5.0.0-rc.6",[m
+[31m-    "react-toasts": "^3.0.2"[m
+[32m+[m[32m    "react-toasts": "^3.0.2",[m
+[32m+[m[32m    "react-via-cep": "^2.0.2"[m
+   },[m
+   "scripts": {[m
+     "start": "react-scripts start",[m
+[1mdiff --git a/src/CadastroLocatario.js b/src/CadastroLocatario.js[m
+[1mindex ec704c9..b6015e2 100644[m
+[1m--- a/src/CadastroLocatario.js[m
+[1m+++ b/src/CadastroLocatario.js[m
+[36m@@ -9,6 +9,7 @@[m [mimport axios from 'axios';[m
+ //Toast message[m
+ import { ToastContainer, toast } from 'react-toastify';[m
+ import 'react-toastify/dist/ReactToastify.css';[m
+[32m+[m[32mimport ViaCep from '../dist';[m
+ toast.configure()[m
+ [m
+ class CadastroLocatario extends Component {[m
+[36m@@ -114,10 +115,25 @@[m [mclass CadastroLocatario extends Component {[m
+   componentWillMount(){[m
+     //Metodo que é executado antes do componente ser rendenizado[m
+   }[m
+[31m-  constructor()[m
+[32m+[m[32m  constructor(props)[m[41m [m
+   {[m
+[31m-    super();[m
+[31m-    this.state = {lista: []};[m
+[32m+[m
+[32m+[m[32m    super(props);[m
+[32m+[m[32m    this.state = { cep: '' , cidade: '', bairro: '', estado: ''};[m
+[32m+[m
+[32m+[m[32m    this.handleChangeCep = this.handleChangeCep.bind(this);[m
+[32m+[m[32m    this.handleSuccess = this.handleSuccess.bind(this);[m
+[32m+[m[32m  }[m
+[32m+[m[32m  handleChangeCep(evt) {[m
+[32m+[m[32m    this.setState({ cep: evt.target.value })[m
+[32m+[m[41m    [m
+[32m+[m[32m  }[m
+[32m+[m[32m  handleSuccess(cepData) {[m
+[32m+[m[32m    console.log(cepData);[m
+[32m+[m[32m    this.setState({cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);[m
+[32m+[m
+[32m+[m
+[32m+[m
+   }[m
+   render() {[m
+     return ([m
+[36m@@ -143,21 +159,36 @@[m [mclass CadastroLocatario extends Component {[m
+             <label htmlFor="telefone">Telefone</label>[m
+             <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..."/>[m
+           </div>[m
+[32m+[m[32m          <div className="form-group">[m
+[32m+[m[32m          <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>[m
+[32m+[m[32m          { ({ data, loading, error, fetch }) => {[m
+[32m+[m[32m            if (loading) {[m
+[32m+[m[32m              return <p>loading...</p>[m
+[32m+[m[32m            }[m
+[32m+[m[41m           [m
+[32m+[m[32m            return<div className="form-group">[m
+[32m+[m[41m            [m
+[32m+[m[32m              <input className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>[m
+[32m+[m[41m     [m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          }}[m
+[32m+[m[32m        </ViaCep>[m
+[32m+[m[32m          </div>[m
+           <div className="form-group">[m
+             <label htmlFor="bairro">Bairro</label>[m
+[31m-            <input type="text" className="form-control" id="bairro" placeholder="Digite o Bairro..."/>[m
+[32m+[m[32m            <input type="text" className="form-control" value={this.state.bairro}  id="bairro" placeholder="Digite o Bairro..."/>[m
+           </div>[m
+           <div className="form-group">[m
+             <label htmlFor="Numero">Numero</label>[m
+[31m-            <input type="text" className="form-control" id="numero" placeholder="Digite o Numero..."/>[m
+[32m+[m[32m            <input type="text" className="form-control"  id="numero" placeholder="Digite o Numero..."/>[m
+           </div>[m
+           <div className="form-group">[m
+             <label htmlFor="Cidade">Cidade</label>[m
+[31m-            <input type="text" className="form-control" id="cidade" placeholder="Digite a Cidade..."/>[m
+[32m+[m[32m            <input type="text" className="form-control" value= {this.state.cidade} id="cidade" placeholder="Digite a Cidade..."/>[m
+           </div>[m
+           <div className="form-group">[m
+             <label htmlFor="estado">Estado</label>[m
+[31m-            <input type="text" className="form-control" id="estado" placeholder="Digite o Estado..."/>[m
+[32m+[m[32m            <input type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>[m
+           </div>[m
+           <div className="form-group">[m
+             <label htmlFor="DataNasc">Data de Nascimento</label>[m

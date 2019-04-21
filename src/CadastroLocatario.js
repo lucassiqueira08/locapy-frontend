@@ -9,6 +9,7 @@ import axios from 'axios';
 //Toast message
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ViaCep from '../dist';
 toast.configure()
 
 class CadastroLocatario extends Component {
@@ -114,10 +115,25 @@ class CadastroLocatario extends Component {
   componentWillMount(){
     //Metodo que é executado antes do componente ser rendenizado
   }
-  constructor()
+  constructor(props) 
   {
-    super();
-    this.state = {lista: []};
+
+    super(props);
+    this.state = { cep: '' , cidade: '', bairro: '', estado: ''};
+
+    this.handleChangeCep = this.handleChangeCep.bind(this);
+    this.handleSuccess = this.handleSuccess.bind(this);
+  }
+  handleChangeCep(evt) {
+    this.setState({ cep: evt.target.value })
+    
+  }
+  handleSuccess(cepData) {
+    console.log(cepData);
+    this.setState({cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
+
+
+
   }
   render() {
     return (
@@ -144,20 +160,35 @@ class CadastroLocatario extends Component {
             <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..."/>
           </div>
           <div className="form-group">
+          <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
+          { ({ data, loading, error, fetch }) => {
+            if (loading) {
+              return <p>loading...</p>
+            }
+           
+            return<div className="form-group">
+            
+              <input className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
+     
+            </div>
+          }}
+        </ViaCep>
+          </div>
+          <div className="form-group">
             <label htmlFor="bairro">Bairro</label>
-            <input type="text" className="form-control" id="bairro" placeholder="Digite o Bairro..."/>
+            <input type="text" className="form-control" value={this.state.bairro}  id="bairro" placeholder="Digite o Bairro..."/>
           </div>
           <div className="form-group">
             <label htmlFor="Numero">Numero</label>
-            <input type="text" className="form-control" id="numero" placeholder="Digite o Numero..."/>
+            <input type="text" className="form-control"  id="numero" placeholder="Digite o Numero..."/>
           </div>
           <div className="form-group">
             <label htmlFor="Cidade">Cidade</label>
-            <input type="text" className="form-control" id="cidade" placeholder="Digite a Cidade..."/>
+            <input type="text" className="form-control" value= {this.state.cidade} id="cidade" placeholder="Digite a Cidade..."/>
           </div>
           <div className="form-group">
             <label htmlFor="estado">Estado</label>
-            <input type="text" className="form-control" id="estado" placeholder="Digite o Estado..."/>
+            <input type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>
           </div>
           <div className="form-group">
             <label htmlFor="DataNasc">Data de Nascimento</label>
