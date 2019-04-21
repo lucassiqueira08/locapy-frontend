@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+  color: #505962;
+}
+
+.offset:before {
+  height: 4rem;
+  margin-top: -4rem;
+  content: "";
+  display: block;
+}
+.fixed-top  {
+  -webkit-backface-visibility: hidden;
+}
+
+.fixed-background {
+  position: relative;
+  width: 100%;
+}
+
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999!important;
+}
+
+.landing {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  display: table;
+  z-index: -1;
+}
+.home-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.home-inner {
+  position: fixed; 
+  display: table;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+}
+
+[class*="col-"] {
+  padding: 1rem;
+}
+
+.navbar {
+  padding: .7rem 1rem;
+  text-transform: uppercase;
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  transition: background-color .5s ease 0s;
+}
+.navbar-brand img {
+  height: 2rem;
+}
+.svg-inline--fa.fa-w-14 {
+  color: white;
+  font-size: 1.6rem;
+}
+.navbar-nav li {
+  padding-right: .8rem;
+}
+.navbar-nav .nav-link {
+  color: white;
+  padding-top: .8rem;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: #1ebba3;
+}
+.navbar.solid {
+  background: rgba(0, 0, 0, 0.7)!important;
+  transition: background-color 1s ease 0s;
+}
+
+.home-inner {
+  background-image: url('../images/home1.jpg');
+}
+.caption {
+  margin-top: 100px;
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 38%;
+  z-index: 1;
+}
+.caption h1 {
+  color: white;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .3rem;
+  text-shadow: .1rem .1rem .8rem black;
+  padding-bottom: 1rem;
+}
+.caption h3 {
+  color: white;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-shadow: .1rem .1rem .5rem black;
+  padding-bottom: 2rem;
+}
+.btn-lg {
+  border-width: medium;
+  border-radius: 0;
+  padding: .8rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  display: inline-block!important;
+}
+
+.ui {
+  background-color: #FAFAFA;
+  padding: 30px;
+  margin-top: 30px; 
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cadastro {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+  background-image: url('../images/homeback1.jpg');
+}
+
+.imageusu1 {
+  line-height: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.imageusu2 {
+  border:1px dotted black;
+  border-radius:50%;
+}
+
+.imagemusu {
+  background: url('../images/foto-padrao.png');
+  margin-left: 8px;
+  width: 280px;
+  height: 290px;
+  background-position: center; /*posisiona a imagem no centro do elemento*/
+  background-repeat: no-repeat; /*Não repete*/
+  background-size: cover;  /*deixa a imagem na proporção*/
+  border-radius: 10px;  /*arredonda os cantos*/
+  border: 1px solid #A9A9A9; /*adiciona borda*/
+}
+
+@media screen and (max-width: 368px) {
+  .imagemusu.smallResolution{
+      min-height: auto;
+  }
+
+}
+
+.light {
+  background-color: rgba( 255, 255, 255, .85);
+  padding: 3rem 2rem 2rem;
+  z-index: 1000!important;
+}

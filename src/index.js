@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import CadastroLocador from './CadastroLocador';
+import CadastroLocatario from './components/pages/CadastroLocatario';
+import CadastroLocador from './components/pages/CadastroLocador';
+import PaginaInicial from './components/pages/PaginaInicial';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-ReactDOM.render(<CadastroLocador />, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+    <Switch>
+        <Route path="/" exact={true} component={PaginaInicial} />
+        <Route path="/CadastroLocatario" exact={true} component={CadastroLocatario} />
+        <Route path="/CadastroLocador" exact={true} component={CadastroLocador} />
+    </Switch>
+</ BrowserRouter>, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
