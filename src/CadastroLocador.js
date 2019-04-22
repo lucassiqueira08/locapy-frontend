@@ -56,9 +56,9 @@ class CadastroLocador extends Component {
     data.nome_fantasia = $('#nome_fantasia').val();
     data.razao_social = $('#razao_social').val();
     data.inscricao_estadual = $('#inscricao_estadual').val();
-    data.cnpj = $('#cnpj').val();
+    data.cnpj = $('#cnpj').val().replace(/[\.-/-]/g, "");  
     data.endereco = $('#endereco').val();
-    data.telefone = $('#telefone').val();
+    data.telefone = $('#telefone').val().replace(/[\(\)\.\s-]+/g,"");
     data.perfil = {
       "usuario": {
           "username":  $('#usuario').val(),
@@ -86,6 +86,7 @@ class CadastroLocador extends Component {
           if(errorResponse.response.data.cnpj){
             errorMessages.push("CNPJ: " + errorResponse.response.data.cnpj[0])
           }
+          debugger;
           if(errorResponse.response.data.perfil.usuario.username){
             errorMessages.push("Username: " + errorResponse.response.data.perfil.usuario.username[0])
           }
@@ -124,7 +125,7 @@ class CadastroLocador extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="razao_social">Razão social</label>
-            <InputMask className="form-control" guide={true}id="razao_social" placeholder="Digite a razão social..." required/>
+            <input maxlength='12'  className="form-control" id="razao_social" placeholder="Digite a razão social..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="inscricao_estadual">Inscrição estadual</label>
@@ -155,7 +156,7 @@ class CadastroLocador extends Component {
             <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite uma senha..." required/>
           </div>
           <div className="form-checkid=">
-            <input type="checkbox" className="form-check-input" />
+            <input type="checkbox" id="Termo" name="Termo" className="form-check-input" />
             <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
           </div>
           <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocador(e)}>Cadastrar</button>

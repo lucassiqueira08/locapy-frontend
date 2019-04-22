@@ -44,7 +44,7 @@ class CadastroLocatario extends Component {
   }
   
   ComparaSenha(senha,senha2){
-      if(senha == senha2)
+      if(senha === senha2)
       {
         return {"isValid" : true};
 
