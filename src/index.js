@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import CadastroLocatario from './CadastroLocatario';
 import CadastroLocador from './CadastroLocador';
+import CadastroSalas from './CadastroSalas';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // importando o BrowserRouter do pacote que acabamos de instalar
@@ -12,6 +13,7 @@ ReactDOM.render(
         <Route path="/" exact={true} component={CadastroLocatario} />
         <Route path="/CadastroLocatario" exact={true} component={CadastroLocatario} />
         <Route path="/CadastroLocador" exact={true} component={CadastroLocador} />
+        <Route path="/CadastroSalas" exact={true} component={CadastroSalas} />
     </Switch>
 </ BrowserRouter>,
 

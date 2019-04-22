@@ -11,7 +11,6 @@ import axios from 'axios';
 //Toast message
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { ReactComponent } from '*.svg';
 toast.configure()
 
 class CadastroSalas extends Component {
@@ -23,7 +22,7 @@ class CadastroSalas extends Component {
         if (
             campos.nome == '' ||
             campos.metragem == '' ||
-            campos.capacidade == '' ||
+            campos.capaidacde == '' ||
             campos.logradouro == '' ||
             campos.numero == '' ||
             campos.bairro == '' ||
