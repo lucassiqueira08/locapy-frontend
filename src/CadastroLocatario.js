@@ -41,7 +41,6 @@ class CadastroLocatario extends Component {
       return {"isValid" : false,  "msg" : "Você precisa aceitar o termo"};
     }
 
-
   }
   
   ComparaSenha(senha,senha2){
@@ -52,7 +51,6 @@ class CadastroLocatario extends Component {
       }else{
         return {"isValid" : false,  "msg" :"A senhas digitadas são diferentes"};
       }
-
 
   }
   
@@ -68,7 +66,6 @@ class CadastroLocatario extends Component {
 
     data.nome = $('#nome').val();
     data.cpf = $('#cpf').val().replace(/[\.-]/g, "");
-    console.log( data.cpf);
     data.telefone = $('#telefone').val().replace(/[\(\)\.\s-]+/g,"");
     data.logradouro = $('#logradouro').val();
     data.numero = $('#numero').val();
@@ -89,9 +86,9 @@ class CadastroLocatario extends Component {
     var valid = this.ValidaCampos(data);
 
 
- if (valid.isValid){
-    valid = this.ComparaSenha(senha,senha2);
- }
+  if (valid.isValid){
+      valid = this.ComparaSenha(senha,senha2);
+  }
     //Validação do termo.
     if (valid.isValid){
     valid = this.ValidaTermo(CheckTermo); 
@@ -106,20 +103,20 @@ class CadastroLocatario extends Component {
       .catch(error => {
         var errorResponse = JSON.parse(JSON.stringify(error));
         var errorMessages = [];
-        console.log(errorResponse);
-        console.log(errorResponse.response.data);
-        if(errorResponse.response.status == '400'){
+        if(errorResponse.response.status == 400){
+          console.log(errorResponse.response);
           if(errorResponse.response.data.cpf){
+
             errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
-         
+            toast.error("cpf: " + errorResponse.response.data.cpf[0]);
           }
           if(errorResponse.response.data.perfil.usuario.username){
-            errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);
-           
+
+            errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
           }
           if(errorResponse.response.data.perfil.usuario.email){
+
             errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
-           
           }
         }
         else if(errorResponse.response.status == 500){
@@ -146,7 +143,6 @@ class CadastroLocatario extends Component {
   }
   constructor(props) 
   {
-
     super(props);
     this.state = { cep: '' , cidade: '', bairro: '', estado: ''};
 
@@ -161,9 +157,6 @@ class CadastroLocatario extends Component {
     console.log(cepData);
     //Setar os dados do viaCep nos campos.
     this.setState({cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
-
-
-
   }
   render() {
     return (
@@ -190,12 +183,11 @@ class CadastroLocatario extends Component {
             <InputMask type="text" mask="(99)99999-9999" guide={true} className="form-control" id="telefone" placeholder="Digite o telefone..."/>
           </div>
           <div className="form-group">
-          <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
+        <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
           { ({ data, loading, error, fetch }) => {
             if (loading) {
-              return <p>loading...</p>
+              return <p>Procurando...</p>
             }
-           
             return<div className="form-group">
               <label htmlFor="CepLabel">Cep</label>
               <InputMask className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
