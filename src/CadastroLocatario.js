@@ -104,7 +104,7 @@ class CadastroLocatario extends Component {
         var errorResponse = JSON.parse(JSON.stringify(error));
         var errorMessages = [];
         if(errorResponse.response.status == 400){
-          console.log(errorResponse.response);
+          
           if(errorResponse.response.data.cpf){
 
             errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
@@ -154,7 +154,7 @@ class CadastroLocatario extends Component {
     
   }
   handleSuccess(cepData) {
-    console.log(cepData);
+
     //Setar os dados do viaCep nos campos.
     this.setState({cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
   }

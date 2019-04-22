@@ -81,7 +81,7 @@ class CadastroLocador extends Component {
       .catch(error => {
         var errorResponse = JSON.parse(JSON.stringify(error));
         var errorMessages = [];
-        console.log(errorResponse);
+       
         if(errorResponse.response.status == 400){
           if(errorResponse.response.data.cnpj){
             errorMessages.push("CNPJ: " + errorResponse.response.data.cnpj[0])
