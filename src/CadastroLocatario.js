@@ -9,23 +9,30 @@ import axios from 'axios';
 //Toast message
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+//Mascara 
 import InputMask from 'react-input-mask';
-import ViaCep from '../dist';
-toast.configure()
+//Consulta do CEP
+import ViaCep from 'react-via-cep';
+//Inputs do formulario
+import FormInput from './Input.js'
+
 
 class CadastroLocatario extends Component {
   ValidaCampos(campos){
-    //debugger;
     //Valida campos vazios
     if(campos.nome == '' ||
-    campos.cpf == '' ||
-    
-    campos.cpf == '' ||
-    campos.endereco == '' ||
-    campos.telefone == '' ||
-    campos.perfil.usuario.username == '' ||
-    campos.perfil.usuario.email == '' ||
-    campos.perfil.usuario.password == '') {
+      campos.cpf == '' ||
+      campos.telefone == '' ||
+      campos.logradouro == '' ||
+      campos.numero == '' ||
+      campos.bairro == '' ||
+      campos.cidade == '' ||
+      campos.estado == '' ||
+      campos.data_nasc == '' ||
+      campos.perfil == '' ||
+      campos.username == '' ||
+      campos.email == '' ||
+      campos.password == '') {
       return {"isValid" : false, "msg" : "Todos os campos são obrigatórios!"};
     }
     if(campos.perfil.usuario.password.length < 8) {
@@ -34,7 +41,6 @@ class CadastroLocatario extends Component {
     return {"isValid" : true}
   }
   ValidaTermo(termo){
-    
     if (termo){
       return {"isValid" : true};
     }else{
@@ -43,8 +49,8 @@ class CadastroLocatario extends Component {
 
   }
   
-  ComparaSenha(senha,senha2){
-      if(senha === senha2)
+  ValidaSenha(senha,confirmaSenha){
+      if(senha === confirmaSenha)
       {
         return {"isValid" : true};
 
@@ -82,12 +88,12 @@ class CadastroLocatario extends Component {
     }
     var CheckTermo =   $('#Termo').is(':checked');
     var senha = $('#senha').val();
-    var senha2 = $('#ConfirmaSenha').val();
+    var confirmaSenha = $('#ConfirmaSenha').val();
     var valid = this.ValidaCampos(data);
 
 
   if (valid.isValid){
-      valid = this.ComparaSenha(senha,senha2);
+      valid = this.ValidaSenha(senha,confirmaSenha);
   }
     //Validação do termo.
     if (valid.isValid){
@@ -143,7 +149,7 @@ class CadastroLocatario extends Component {
   }
   constructor(props) 
   {
-    super(props);
+    super(props)
     this.state = { cep: '' , cidade: '', bairro: '', estado: ''};
 
     this.handleChangeCep = this.handleChangeCep.bind(this);
@@ -162,78 +168,40 @@ class CadastroLocatario extends Component {
     return (
       <form className="centro" type="POST" id="formLocatario"> 
         <div className="formulario">
+          <FormInput campo="Nome" id="nome" placeholder="Digite o nome..." required="true"/>
+          <FormInput campo="RG" id="rg" placeholder="Digite a Rg..." required="true"/>
+          <FormInput campo="Logradouro" id="logradouro" placeholder="Digite o Logradouro..." mask="999.999.999-99" guide={true} required="true"/>
+          <FormInput campo="CPF" id="cpf" campo="Cpf" placeholder="Digite o Cpf..." mask="999.999.999-99" guide={true} required="true"/>
+          <FormInput campo="Telefone" id="telefone"mask="(99)99999-9999" guide={true} placeholder="Digite o telefone..."/>
           <div className="form-group">
-            <label htmlFor="nome">Nome:</label>
-            <InputMask type="text" className="form-control" id="nome" placeholder="Digite o nome..." required/>
+          <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
+            { ({ data, loading, error, fetch }) => {
+              if (loading) {
+                return <p>Procurando...</p>
+              }
+              if (error) {
+                return <p style="color:'red'">Erro ao consultar CEP...</p>
+              }
+              if (data) {
+                return<div className="form-group">
+                  <label htmlFor="CepLabel">Cep</label>
+                  <InputMask className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
+                </div>
+                }}
+              }
+          </ViaCep>
           </div>
-          <div className="form-group">
-            <label htmlFor="Rg">RG</label>
-            <InputMask type="text" className="form-control" id="rg" placeholder="Digite a Rg..." required/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="cpf">Cpf</label>
-            <InputMask type="text" mask="999.999.999-99" guide={true} className="form-control" id="cpf" placeholder="Digite o Cpf..." required/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="endereco">Logradouro</label>
-            <InputMask type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="telefone">Telefone</label>
-            <InputMask type="text" mask="(99)99999-9999" guide={true} className="form-control" id="telefone" placeholder="Digite o telefone..."/>
-          </div>
-          <div className="form-group">
-        <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
-          { ({ data, loading, error, fetch }) => {
-            if (loading) {
-              return <p>Procurando...</p>
-            }
-            return<div className="form-group">
-              <label htmlFor="CepLabel">Cep</label>
-              <InputMask className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
-     
-            </div>
-          }}
-        </ViaCep>
-          </div>
-          <div className="form-group">
-            <label htmlFor="bairro">Bairro</label>
-            <InputMask type="text" className="form-control" value={this.state.bairro}  id="bairro" placeholder="Digite o Bairro..."/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="Numero">Numero</label>
-            <InputMask type="text" className="form-control"  id="numero" placeholder="Digite o Numero..."/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="Cidade">Cidade</label>
-            <InputMask type="text" className="form-control" value= {this.state.cidade} id="cidade" placeholder="Digite a Cidade..."/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="estado">Estado</label>
-            <InputMask type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="DataNasc">Data de Nascimento</label>
-            <InputMask type="date" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..."/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="usuario">Usuário</label>
-            <InputMask type="text" className="form-control" id="usuario" placeholder="Digite um nome de usuário..." required/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">E-mail</label>
-            <InputMask type="email"  className="form-control" id="email" placeholder="Digite seu e-mail..." required/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="senha">Senha</label>
-            <input type="password" className="form-control" id="senha" placeholder="Digite uma senha..." required/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="senha">Confirme a senha</label>
-            <input type="password" className="form-control" id="ConfirmaSenha" placeholder="Digite uma senha..." required/>
-          </div>
+          <FormInput campo="Bairro" id="bairro" value={this.state.bairro} placeholder="Digite o Bairro..." required="true"/>
+          <FormInput campo="Número" id="numero" value={this.state.numero} placeholder="Digite o Numero..." required="true"/>
+          <FormInput campo="Cidade" id="cidade" value= {this.state.cidade} placeholder="Digite a Cidade..." required="true"/>
+          <FormInput campo="Estado" id="estado" value= {this.state.estado} placeholder="Digite o Estado..." required="true"/>
+          <FormInput campo="Data de nascimento" id="data_nasc" placeholder="Digite a data de nascimento..." required="true"/>
+          <FormInput campo="Usuário" id="usuario" placeholder="Digite um nome de usuário..." required="true"/>
+          <FormInput campo="E-mail" id="email" placeholder="Digite seu e-mail..." required="true"/>
+          <FormInput type="password" campo="Senha" id="senha" placeholder="Digite uma senha..." required="true"/>
+          <FormInput type="password" campo="Confirmar senha" id="ConfirmaSenha" placeholder="Digite uma senha..." required="true"/>
           <div className="form-check">
-            <input type="checkbox" className="form-check-input" id="Termo"/>
+            <input type="checkbox" className="form-check-input" id="Termo" required/>
             <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
           </div>
           <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
