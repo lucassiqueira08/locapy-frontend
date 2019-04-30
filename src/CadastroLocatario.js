@@ -10,7 +10,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import InputMask from 'react-input-mask';
-import ViaCep from '../dist';
+import ViaCep from './dist';
 toast.configure()
 
 class CadastroLocatario extends Component {

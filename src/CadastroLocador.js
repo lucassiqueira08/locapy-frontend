@@ -125,7 +125,7 @@ class CadastroLocador extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="razao_social">Razão social</label>
-            <input maxlength='12'  className="form-control" id="razao_social" placeholder="Digite a razão social..." required/>
+            <input maxlength='12' className="form-control" id="razao_social" placeholder="Digite a razão social..." required/>
           </div>
           <div className="form-group">
             <label htmlFor="inscricao_estadual">Inscrição estadual</label>
