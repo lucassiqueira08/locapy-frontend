@@ -19,7 +19,6 @@ class CadastroLocatario extends Component {
         //Valida campos vazios
         if (campos.nome == '' ||
             campos.cpf == '' ||
-
             campos.cpf == '' ||
             campos.endereco == '' ||
             campos.telefone == '' ||
@@ -121,83 +120,13 @@ class CadastroLocatario extends Component {
         this.state = { lista: [] };
     }
     render() {
-        /*return (
-            <form className="centro" type="POST" id="formLocatario">
-                <div className="formulario">
-                    <div className="form-group">
-                        <label htmlFor="nome">Nome:</label>
-                        <input type="text" className="form-control" id="nome" placeholder="Digite o nome..." required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="Rg">RG</label>
-                        <input type="text" className="form-control" id="rg" placeholder="Digite a Rg..." required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="cpf">Cpf</label>
-                        <input type="text" className="form-control" id="cpf" placeholder="Digite o Cpf..." required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="endereco">Logradouro</label>
-                        <input type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..." />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="telefone">Telefone</label>
-                        <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..." />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="bairro">Bairro</label>
-                        <input type="text" className="form-control" id="bairro" placeholder="Digite o Bairro..." />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="Numero">Numero</label>
-                        <input type="text" className="form-control" id="numero" placeholder="Digite o Numero..." />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="Cidade">Cidade</label>
-                        <input type="text" className="form-control" id="cidade" placeholder="Digite a Cidade..." />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="estado">Estado</label>
-                        <input type="text" className="form-control" id="estado" placeholder="Digite o Estado..." />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="DataNasc">Data de Nascimento</label>
-                        <input type="text" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..." />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="usuario">Usuário</label>
-                        <input type="text" className="form-control" id="usuario" placeholder="Digite um nome de usuário..." required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">E-mail</label>
-                        <input type="email" className="form-control" id="email" placeholder="Digite seu e-mail..." required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="senha">Senha</label>
-                        <input type="password" className="form-control" id="senha" placeholder="Digite uma senha..." required />
-                    </div>
-                    <div className="form-check">
-                        <input type="checkbox" className="form-check-input" id="Termo" />
-                        <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
-
-                </div>
-                <ToastContainer />
-            </form>
-        );*/
         return (
-            <div className="fixed-background shadow-lg">
-                <div className="row light">
+            <div className="form">
+                <div className="row">
                     <div className="col-lg-2"></div>
                     <div className="col-lg-8">
-                        <div className="ui">
-                            <form className="form-group">
-                                <Link to='/'>
-                                    <button type="button" class="close" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </Link>
+                        <div className="register-form">
+                            <form className="form-group" type="POST" id="formLocatario">
                                 <div className="row">
                                     <div className="col-md-4 mb-3">
                                         <button className="imagemusu">
@@ -205,114 +134,106 @@ class CadastroLocatario extends Component {
                                         </button>                                        
                                     </div>
                                     <div className="col-md-8 mb-3">
-                                        <label htmlFor="usuario">Usuário</label>
-                                        <InputMask className="form-control" guide={true} id="usuario" placeholder="Digite um nome de usuário..." required />
+                                        <div className="form-group usu"> 
+                                            <label htmlFor="usuario">Usuário</label>
+                                            <InputMask className="form-control" guide={true} id="usuario" placeholder="Digite um nome de usuário..." required />
+                                        </div>
 
+                                        <div className="form-group usu"> 
                                         <label htmlFor="senha">Senha</label>
                                         <InputMask className="form-control" mask="" guide={true} id="senha" placeholder="Digite uma senha..." required />
+                                        </div>
 
+                                        <div className="form-group usu"> 
                                         <label htmlFor="senha">Confirma Senha</label>
                                         <InputMask className="form-control" mask="" guide={true} id="senha" placeholder="Digite uma senha..." required />
+                                        </div>
 
+                                        <div className="form-group usu"> 
                                         <label htmlFor="email">E-mail</label>
                                         <InputMask className="form-control" type="email" guide={true} id="email" placeholder="Digite seu e-mail..." required />
-
+                                        </div>
                                     </div>
                                 </div>
 
-                                <hr className="mb-0"></hr>
-                                <div className="row ">
-                                    <div className="col-md-6 mb-3">
-                                        <Link to='/CadastroLocador'>
-                                            <button type="button" className="btn btn-lg btn-block btn-outline-light">
-                                                LOCADOR
-                                            </button>
-                                        </Link>
-                                    </div>
-                                    <div className="col-md-6 mb-3">
-                                        <button type="button" class="btn btn-lg btn-block btn-outline-light active">
-                                            LOCATÁRIO
-                                        </button>
-                                    </div>
-                                </div>
+                                <hr className="mb-3"></hr>
 
                                 <div className="row">
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="Rg">RG</label>
                                         <input type="text" className="form-control" id="rg" placeholder="Digite a RG..." required />
                                     </div>
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="cpf">CPF</label>
                                         <input type="text" className="form-control" id="cpf" placeholder="Digite o CPF..." required />
                                     </div>
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="telefone">Telefone</label>
                                         <input type="text" className="form-control" id="telefone" placeholder="Digite o telefone..." />
                                     </div>
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="DataNasc">Data de Nascimento</label>
                                         <input type="text" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..." />
                                     </div>
                                 </div>
 
-                                <div className="mb-3">
-                                    <label htmlFor="endereco">Logradouro</label>
-                                    <input type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..." />
+                                <div className="row">
+                                    <div className="form-group col-md-12">
+                                        <label htmlFor="endereco">Logradouro</label>
+                                        <input type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..." />
+                                    </div>
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="estado">Estado</label>
                                         <input type="text" className="form-control" id="estado" placeholder="Digite o Estado..." />
                                     </div>
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="Cidade">Cidade</label>
                                         <input type="text" className="form-control" id="cidade" placeholder="Digite a Cidade..." />
                                     </div>
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="bairro">Bairro</label>
                                         <input type="text" className="form-control" id="bairro" placeholder="Digite o Bairro..." />
                                     </div>
-                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group col-md-6">
                                         <label htmlFor="Cep">CEP</label>
                                         <input type="text" className="form-control" id="cep" placeholder="Digite a CEP..." />
                                     </div>
                                 </div>
 
-                                <div className="mb-3">
-                                    <label htmlFor="email">E-mail</label>
-                                    <input type="email" className="form-control" id="email" placeholder="Digite seu e-mail..." required />
+                                <div className='row'>
+                                    <div className="form-group col-md-12">
+                                        <label htmlFor="email">E-mail</label>
+                                        <input type="email" className="form-control" id="email" placeholder="Digite seu e-mail..." required />
+                                    </div>
                                 </div>
 
                                 <hr className="mb-4"></hr>
 
                                 <div className="custom-control custom-checkbox">
-                                    <input type="checkbox" className="form-check-input" />
+                                    <input type="checkbox" id='termo' name='termo' className="form-check-input" />
                                     <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
                                 </div>
                                 <hr className="mb-4"></hr>
                                 <div className="row">
                                     <div className="col-md-10 mb-3"></div>
                                     <div className="col-md-2 mb-3">
-                                        <button type="submit" className="btn btn-primary active" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
+                                        <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
                                     </div>
                                 </div>
+                                <ToastContainer />
                             </form>
                         </div>
                     </div>
                     <div className="col-lg-2"></div>
-                </div>
-                <div>
-                    <div className="fixed-wrap">
-                        <div className="cadastro ">
-                        </div>
-                    </div>
                 </div>
             </div>
         );

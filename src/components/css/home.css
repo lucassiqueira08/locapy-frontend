@@ -1,11 +1,284 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
+
+* {
+  box-sizing: border-box;
+}
 body {
-  overflow-x: hidden;
-  font-family: 'Lato', sans-serif;
-  color: #505962;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+*:focus {
+  outline: none;
+}
+
+/* ---------- PAGINA DE LOGIN E REGISTRO ---------- */
+
+body .loginpage {
+  background: #181818;
+  color: #fff;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.right {
+  flex: 1.5;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* LOGIN */
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding-bottom: 1rem;
+}
+
+.login form {
+  width: 80%;
+  padding-bottom: 3rem;
+}
+
+.login .logo {
+  margin-bottom: 8vh;
+
+}
+
+.login .logo img {
+  width: 300px;
+}
+
+.login label {
+  font-size: 0.9;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.login .text-input {
+  margin-bottom: 1.3rem;
+  width: 100%;
+  border-radius: 2px;
+  background: #181818;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  line-height: 1.3rem;
+}
+
+.login .btn-login {
+  width: 100%;
+}
+
+.login .btn-register,
+.ou,
+.links {
+  width: 60%;
+}
+
+.login .links a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login .ou {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.2rem;
+  align-items: center;
+}
+
+.login .ou .bar {
+  flex: auto;
+  border: none;
+  height: 1px;
+  background: #aaa;
+}
+
+.login .ou span {
+  color: #ccc;
+  padding: 0 0.8rem;
+}
+.btn-login {
+  padding: 0.7rem 1rem;
+  height: 2.7rem;
+  display: block;
+  border: 0;
+  border-radius: 2px;
+  font-weight: 500;
+  background: #f96816;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.btn-login:hover {
+  background-color: #ff7b39;
+}
+
+.btn-register {
+  padding: 0.7rem 1rem;
+  height: 2.7rem;
+  display: block;
+  border: 1px solid #f4f4f4;
+  border-radius: 2px;
+  font-weight: 500;
+  background: none;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.btn-register:hover {
+  border-color: #ff7b39;
+  color: #ff7b39;
+}
+
+@media(min-width: 1200px) {
+  #left{
+    flex: 4;
+  }
+  #right {
+    flex: 6;
+  }
+}
+/* --------------------- FIM ---------------------- */
+
+.choice {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white
+}
+
+.container{
+  position: relative;
+  width: 90%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, 2fr);
+  grid-auto-rows: auto;
+  grid-gap: 0 40px;
+}
+
+.container .box {
+  position: relative;
+  height: 400px;
+  background: #060c21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.container .box:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  transform: skew(1deg, 1deg);
+  z-index: -1;
+
+}
+
+.content {
+  position: relative;
+  padding: 20px;
+  transform: translateY(40px);
+}
+
+.box .content h2 {
+  position: absolute;
+  top: -60px;
+  right: 20px;
+  margin: 0;
+  padding: 0;
+  font-size: 10em;
+  color: rgba(255,255,255,.05);
+  transition: 0.5s;
+}
+
+.box:hover .content h2 {
+  top: -140px;
+}
+
+.box .content h3 {
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.box .content p {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+.box .content .btn-cadastra {
+  position: relative;
+  margin: 10px 0 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: 1px solid #fff;
+  display: inline-block;
+  color: #fff;
+  transition: 0.5s;
+  transform: translateY(-40px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.box:hover .content .btn-cadastra {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.box .content .btn-cadastra:hover {
+  color: #000;
+  background: #fff;
+}
+/* --------------------- HOME --------------------- */
 .offset:before {
   height: 4rem;
   margin-top: -4rem;
@@ -132,28 +405,51 @@ body {
   text-transform: uppercase;
   display: inline-block!important;
 }
+/* --------------------- FIM ---------------------- */
+/* ---------------- TELA DE ESCOLHA --------------- */
 
-.ui {
-  background-color: #FAFAFA;
-  padding: 30px;
-  margin-top: 30px; 
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+/* --------------------- FIM ---------------------- */
+/* ----------------- FORM CADASTRO ---------------- */
+
+.form {
+  background-color: #DBDBDB;
 }
 
-.cadastro {
-  position: fixed;
-  display: block;
-  top: 0;
-  left: 0;
+.form input:focus {
   width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-  will-change: transform;
-  background-image: url('../images/homeback1.jpg');
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: none;
+  transition: 0.5s;
+  text-shadow: none;
+}
+
+.form .btn-cadastra {
+  border-radius: 1.5rem;
+  border: none;
+  width: 120px;
+  background: #3D51FF;
+  font-weight: white;
+  color: white;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.form .btn-cadastra:hover {
+  background: #122AFE;
+}
+
+.form .btn-cadastra:before {
+  background: white;
+}
+
+.register-form {
+  background-color: white;
+  border: none;
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .imageusu1 {
@@ -170,9 +466,10 @@ body {
 
 .imagemusu {
   background: url('../images/foto-padrao.png');
-  margin-left: 8px;
-  width: 280px;
-  height: 290px;
+  margin-left: 23px;
+  margin-top: 20px;
+  width: 260px;
+  height: 260px;
   background-position: center; /*posisiona a imagem no centro do elemento*/
   background-repeat: no-repeat; /*Não repete*/
   background-size: cover;  /*deixa a imagem na proporção*/
@@ -184,11 +481,36 @@ body {
   .imagemusu.smallResolution{
       min-height: auto;
   }
-
 }
 
-.light {
-  background-color: rgba( 255, 255, 255, .85);
-  padding: 3rem 2rem 2rem;
-  z-index: 1000!important;
+
+label {
+  display: inline-block;
+  margin-bottom: 0;
 }
+.form-control {
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.usu {
+  padding: 0.3rem;
+}
+
+.form-group .form-control input {
+  width: 100%;
+  height: 38px;
+  color: hsl(0, 0, 20);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  outline: none!important;
+  border: 1px solid hsla(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 4px hsla(0, 0, 0, 0.2);
+}
+
+/* --------------------- FIM ---------------------- */
+

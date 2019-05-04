@@ -9,7 +9,6 @@ class PaginaInicial extends Component {
             <div>
                 <nav className="navbar navbar-expand-lg fixed-top">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#"><img src="" alt="" /></a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                             <span className="custom-toggler-icon"><i className="fas fa-bars"></i></span>
                         </button>
@@ -17,10 +16,10 @@ class PaginaInicial extends Component {
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <Link to='/CadastroLocador' className="nav-link">CADASTRA-SE</Link>
+                                    <Link to='/LocadorLocatario' className="nav-link">CADASTRA</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/CadastroLocador' className="nav-link">ENTRAR</Link>
+                                    <Link to='/LoginRegister' className="nav-link">ENTRAR</Link>
                                 </li>
                             </ul>
                         </div>
