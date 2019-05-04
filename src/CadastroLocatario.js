@@ -15,55 +15,44 @@ toast.configure()
 
 class CadastroLocatario extends Component {
   ValidaCampos(campos){
-    //debugger;
-    //Valida campos vazios
-    if(campos.nome == '' ||
-    campos.cpf == '' ||
     
-    campos.cpf == '' ||
-    campos.endereco == '' ||
-    campos.telefone == '' ||
-    campos.perfil.usuario.username == '' ||
-    campos.perfil.usuario.email == '' ||
-    campos.perfil.usuario.password == '') {
+    //Valida campos vazios
+    if(campos.nome == ''
+      ,campos.rg == ''
+      ,campos.cpf == ''
+      ,campos.telefone == ''
+      ,campos.cep == ''
+      ,campos.numero == ''
+      ,campos.data_nasc == ''
+      ,campos.ab == ''
+      ,campos.usuario == ''
+      ,campos.email == ''
+      ,campos.senha == ''
+      ,campos.ConfirmaSenha == '') {
       return {"isValid" : false, "msg" : "Todos os campos são obrigatórios!"};
     }
     if(campos.perfil.usuario.password.length < 8) {
       return {"isValid" : false, "msg" : "A senha precisa ter pelo menos 8 dígitos!"};
     }
+    if(campos.senha !== campos.senha2){
+      return {"isValid" : false,  "msg" :"A senhas digitadas são diferentes"};
+    }
     return {"isValid" : true}
   }
   ValidaTermo(termo){
-    
     if (termo){
       return {"isValid" : true};
     }else{
       return {"isValid" : false,  "msg" : "Você precisa aceitar o termo"};
     }
-
   }
-  
-  ComparaSenha(senha,senha2){
-      if(senha === senha2)
-      {
-        return {"isValid" : true};
-
-      }else{
-        return {"isValid" : false,  "msg" :"A senhas digitadas são diferentes"};
-      }
-
-  }
-  
   PostLocatario(e){    
     e.preventDefault();
-    // debugger;
     var url = 'http://localhost:8000/cadastro/locatario/';
     var data = {};
     var header = {
       'Content-Type':"application/json",
     }
-
-
     data.nome = $('#nome').val();
     data.cpf = $('#cpf').val().replace(/[\.-]/g, "");
     data.telefone = $('#telefone').val().replace(/[\(\)\.\s-]+/g,"");
@@ -75,26 +64,18 @@ class CadastroLocatario extends Component {
     data.data_nasc = $('#data_nasc').val();
     data.perfil = {
       "usuario": {
-          "username":  $('#usuario').val(),
-          "email": $('#email').val(),
-          "password": $('#senha').val(),
+        "username":  $('#usuario').val(),
+        "email": $('#email').val(),
+        "password": $('#senha').val(),
       }
     }
     var CheckTermo =   $('#Termo').is(':checked');
-    var senha = $('#senha').val();
-    var senha2 = $('#ConfirmaSenha').val();
-    var valid = this.ValidaCampos(data);
-
-
-  if (valid.isValid){
-      valid = this.ComparaSenha(senha,senha2);
-  }
-    //Validação do termo.
-    if (valid.isValid){
-    valid = this.ValidaTermo(CheckTermo); 
-
-    }
-    if (valid.isValid){
+    var valid = true;
+    
+    //Validações de campo
+    !this.ValidaCampos(data).isValid || !this.ValidaTermo(CheckTermo).isValid ? valid = false : valid = true;
+    
+    if (valid){
       axios.post(url, data, header)
       .then(response => { 
         toast.success("Locatario cadastrado com sucesso!");        
@@ -103,31 +84,35 @@ class CadastroLocatario extends Component {
       .catch(error => {
         var errorResponse = JSON.parse(JSON.stringify(error));
         var errorMessages = [];
-        if(errorResponse.response.status == 400){
+        console.log(errorResponse);
+        debugger;
+        toast.error("Erro interno");
+        // if(errorResponse.response.status == 400){
           
-          if(errorResponse.response.data.cpf){
+        //   if(errorResponse.response.data.cpf){
 
-            errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
-            toast.error("cpf: " + errorResponse.response.data.cpf[0]);
-          }
-          if(errorResponse.response.data.perfil.usuario.username){
+        //     errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
+        //     toast.error("cpf: " + errorResponse.response.data.cpf[0]);
+        //   }
+        //   if(errorResponse.response.data.perfil.usuario.username){
 
-            errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
-          }
-          if(errorResponse.response.data.perfil.usuario.email){
+        //     errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
+        //   }
+        //   if(errorResponse.response.data.perfil.usuario.email){
 
-            errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
-          }
-        }
-        else if(errorResponse.response.status == 500){
-          errorMessages.push("Erro interno no servidor...");
-        }
-        errorMessages.forEach(element => {
-          toast.error(element);
-        });
+        //     errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
+        //   }
+        // }
+        // else if(errorResponse.response.status == 500){
+        //   errorMessages.push("Erro interno no servidor...");
+        // }
+        // errorMessages.forEach(element => {
+        //   toast.error(element);
+        // });
       });
     }
     else{
+      
       this.setState({cidade:'',bairro:'', estado: ''}).bind(this);
       toast.error(valid.msg);
     }
@@ -145,7 +130,7 @@ class CadastroLocatario extends Component {
   {
     super(props);
     this.state = { cep: '' , cidade: '', bairro: '', estado: ''};
-
+    
     this.handleChangeCep = this.handleChangeCep.bind(this);
     this.handleSuccess = this.handleSuccess.bind(this);
   }
@@ -154,9 +139,9 @@ class CadastroLocatario extends Component {
     
   }
   handleSuccess(cepData) {
-
+    
     //Setar os dados do viaCep nos campos.
-    this.setState({cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
+    this.setState({logradouro:cepData.logradouro, cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
   }
   render() {
     return (
@@ -175,10 +160,6 @@ class CadastroLocatario extends Component {
             <InputMask type="text" mask="999.999.999-99" guide={true} className="form-control" id="cpf" placeholder="Digite o Cpf..." required/>
           </div>
           <div className="form-group">
-            <label htmlFor="endereco">Logradouro</label>
-            <InputMask type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
-          </div>
-          <div className="form-group">
             <label htmlFor="telefone">Telefone</label>
             <InputMask type="text" mask="(99)99999-9999" guide={true} className="form-control" id="telefone" placeholder="Digite o telefone..."/>
           </div>
@@ -190,11 +171,15 @@ class CadastroLocatario extends Component {
             }
             return<div className="form-group">
               <label htmlFor="CepLabel">Cep</label>
-              <InputMask className="form-control" placeholder="Digite o Cep"onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
+              <InputMask className="form-control" placeholder="Digite o Cep" id="cep" onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
      
             </div>
           }}
         </ViaCep>
+          </div>
+          <div className="form-group">
+            <label htmlFor="endereco">Logradouro</label>
+            <InputMask type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
           </div>
           <div className="form-group">
             <label htmlFor="bairro">Bairro</label>
@@ -236,7 +221,7 @@ class CadastroLocatario extends Component {
             <input type="checkbox" className="form-check-input" id="Termo"/>
             <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
           </div>
-          <button type="submit" className="btn btn-primary" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
+          <button id="enviar" type="submit" className="btn btn-primary" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
         
         </div>
           <ToastContainer />
