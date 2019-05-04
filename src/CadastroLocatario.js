@@ -86,20 +86,15 @@ class CadastroLocatario extends Component {
         var errorMessages = [];
         console.log(errorResponse);
         debugger;
-        toast.error("Erro interno");
         if(errorResponse.response.status == 400){
-          
           if(errorResponse.response.data.cpf){
-
             errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
             toast.error("cpf: " + errorResponse.response.data.cpf[0]);
           }
           if(errorResponse.response.data.perfil.usuario.username){
-
             errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
           }
           if(errorResponse.response.data.perfil.usuario.email){
-
             errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
           }
         }
@@ -119,26 +114,21 @@ class CadastroLocatario extends Component {
     toast.configure({
       autoClose: 5000,
     });   
-    //Metodo que é executado após o componente ser rendenizado
-  }
-  componentWillMount(){
-    //Metodo que é executado antes do componente ser rendenizado
   }
   constructor(props) 
   {
     super(props);
     this.state = { cep: '' , cidade: '', bairro: '', estado: ''};
-    
     this.handleChangeCep = this.handleChangeCep.bind(this);
     this.handleSuccess = this.handleSuccess.bind(this);
   }
   handleChangeCep(evt) {
     this.setState({ cep: evt.target.value })
-    
   }
   handleSuccess(cepData) {
-    
     //Setar os dados do viaCep nos campos.
+    console.log(cepData);
+    debugger;
     this.setState({logradouro:cepData.logradouro, cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
   }
   render() {
