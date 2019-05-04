@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-fixture `Teste Locador`
+fixture `Getting Started`
     .page `http://localhost:3000/`;
 test('Preenchimento do formulario', async t => {
     await t
@@ -19,7 +19,5 @@ test('Preenchimento do formulario', async t => {
         .typeText('#senha', 'senhaTeste')
         .typeText('#ConfirmaSenha', 'senhaTeste')
         .click('#Termo')
-        .wait(2000)
-        .click('#enviar')
-        .wait(5000)
+        .click('#enviar');                                                  
 });

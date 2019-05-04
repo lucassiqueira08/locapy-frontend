@@ -87,33 +87,31 @@ class CadastroLocatario extends Component {
         console.log(errorResponse);
         debugger;
         toast.error("Erro interno");
-        // if(errorResponse.response.status == 400){
+        if(errorResponse.response.status == 400){
           
-        //   if(errorResponse.response.data.cpf){
+          if(errorResponse.response.data.cpf){
 
-        //     errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
-        //     toast.error("cpf: " + errorResponse.response.data.cpf[0]);
-        //   }
-        //   if(errorResponse.response.data.perfil.usuario.username){
+            errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
+            toast.error("cpf: " + errorResponse.response.data.cpf[0]);
+          }
+          if(errorResponse.response.data.perfil.usuario.username){
 
-        //     errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
-        //   }
-        //   if(errorResponse.response.data.perfil.usuario.email){
+            errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
+          }
+          if(errorResponse.response.data.perfil.usuario.email){
 
-        //     errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
-        //   }
-        // }
-        // else if(errorResponse.response.status == 500){
-        //   errorMessages.push("Erro interno no servidor...");
-        // }
-        // errorMessages.forEach(element => {
-        //   toast.error(element);
-        // });
+            errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
+          }
+        }
+        else if(errorResponse.response.status == 500){
+          errorMessages.push("Erro interno no servidor...");
+        }
+        errorMessages.forEach(element => {
+          toast.error(element);
+        });
       });
     }
     else{
-      
-      this.setState({cidade:'',bairro:'', estado: ''}).bind(this);
       toast.error(valid.msg);
     }
   }
