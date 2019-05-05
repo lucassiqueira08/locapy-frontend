@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import '../css/home.css';
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
@@ -134,6 +133,12 @@ class CadastroLocador extends Component {
                         <InputMask className="form-control" guide={true}id="usuario" placeholder="Digite o nome de usuário..." required/>
                         
                       </div>
+                      
+                      <div className="form-group usu">
+                        <label htmlFor="email">E-mail</label>                        
+                        <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite o Email..." required/>
+                        
+                      </div>   
 
                       <div className="form-group usu"> 
                         <label htmlFor="senha">Senha</label>                        
@@ -147,11 +152,6 @@ class CadastroLocador extends Component {
                         
                       </div>
 
-                      <div className="form-group usu">
-                        <label htmlFor="email">E-mail</label>                        
-                        <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite o Email..." required/>
-                        
-                      </div>   
                     </div>
                   </div>
 
@@ -165,9 +165,13 @@ class CadastroLocador extends Component {
                   </div>
 
                   <div className='row'>
-                    <div className="form-group col-md-12">
+                    <div className="form-group col-md-9">
                       <label htmlFor="nome_fantasia">Nome Fantasia</label>
                       <InputMask className="form-control" guide={true} id="nome_fantasia" placeholder="Digite o nome fantasia..." required />
+                    </div>
+                    <div className="form-group col-md-3">
+                      <label htmlFor="telefone">Telefone</label>
+                      <InputMask className="form-control" mask="(99)99999-9999" guide={true}id="telefone" placeholder="Digite o telefone..." required/>
                     </div>
                   </div>
 
@@ -188,35 +192,12 @@ class CadastroLocador extends Component {
                       <InputMask className="form-control" guide={true}id="endereco" placeholder="Digite o endereço..." required/>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="form-group col-md-6">
-                      <label htmlFor="cidade">Cidade</label>
-                      <InputMask className="form-control" guide={true}id="" placeholder="Digite o Cidade..." required/>
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label htmlFor="bairro">Bairro</label>
-                      <InputMask className="form-control" guide={true}id="" placeholder="Digite o Bairro..." required/>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-group col-md-6">
-                      <label htmlFor="telefone">Telefone</label>
-                      <InputMask className="form-control" mask="(99)99999-9999" guide={true}id="telefone" placeholder="Digite o telefone..." required/>
-                    </div>
-                  </div>
                   
-                  <div className="row">
-                    <div className="form-group col-md-12">
-                      <label htmlFor="email">E-mail</label>
-                      <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite seu e-mail..." required/>
-                    </div>
-                  </div>
                   <hr className="mb-4"></hr>
                   
-                  <div className="custom-control custom-checkbox">
+                  <div className="form-check">
                     <input type="checkbox" id='Termo' name='Termo' className="form-check-input" />
-                    <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
+                    <label className="form-check-label" htmlFor="Termo">Eu li e concordo com os termos de uso</label>
                   </div>  
 
                   <hr></hr>
