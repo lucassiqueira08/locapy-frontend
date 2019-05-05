@@ -131,25 +131,25 @@ class CadastroLocatario extends Component {
                                     <div className="col-md-4 mb-3">
                                         <button className="imagemusu">
                                             <div></div>
-                                        </button>                                        
+                                        </button>
                                     </div>
                                     <div className="col-md-8 mb-3">
-                                        <div className="form-group usu"> 
+                                        <div className="form-group usu">
                                             <label htmlFor="usuario">Usuário</label>
                                             <InputMask className="form-control" guide={true} id="usuario" placeholder="Digite um nome de usuário..." required />
                                         </div>
 
-                                        <div className="form-group usu"> 
+                                        <div className="form-group usu">
                                         <label htmlFor="senha">Senha</label>
                                         <InputMask className="form-control" mask="" guide={true} id="senha" placeholder="Digite uma senha..." required />
                                         </div>
 
-                                        <div className="form-group usu"> 
+                                        <div className="form-group usu">
                                         <label htmlFor="senha">Confirma Senha</label>
                                         <InputMask className="form-control" mask="" guide={true} id="senha" placeholder="Digite uma senha..." required />
                                         </div>
 
-                                        <div className="form-group usu"> 
+                                        <div className="form-group usu">
                                         <label htmlFor="email">E-mail</label>
                                         <InputMask className="form-control" type="email" guide={true} id="email" placeholder="Digite seu e-mail..." required />
                                         </div>
@@ -219,7 +219,7 @@ class CadastroLocatario extends Component {
                                 <hr className="mb-4"></hr>
 
                                 <div className="custom-control custom-checkbox">
-                                    <input type="checkbox" id='termo' name='termo' className="form-check-input" />
+                                    <input type="checkbox" id='Termo' name='Termo' className="form-check-input" />
                                     <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
                                 </div>
                                 <hr className="mb-4"></hr>

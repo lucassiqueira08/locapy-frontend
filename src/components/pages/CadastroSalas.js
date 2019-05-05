@@ -7,7 +7,6 @@ import $ from 'jquery'
 //JQUERY MASKS
 import InputMask from 'react-input-mask'
 //Componente de requests HTTPS
-import axios from 'axios';
 //Toast message
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

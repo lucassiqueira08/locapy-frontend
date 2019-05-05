@@ -57,9 +57,9 @@ class CadastroLocador extends Component {
     data.nome_fantasia = $('#nome_fantasia').val();
     data.razao_social = $('#razao_social').val();
     data.inscricao_estadual = $('#inscricao_estadual').val();
-    data.cnpj = $('#cnpj').val();
+    data.cnpj = $('#cnpj').val().replace(/[\.-/-]/g, "");  
     data.endereco = $('#endereco').val();
-    data.telefone = $('#telefone').val();
+    data.telefone = $('#telefone').val().replace(/[\(\)\.\s-]+/g,"");
     data.perfil = {
       "usuario": {
           "username":  $('#usuario').val(),
@@ -215,7 +215,7 @@ class CadastroLocador extends Component {
                   <hr className="mb-4"></hr>
                   
                   <div className="custom-control custom-checkbox">
-                    <input type="checkbox" id='termo' name='termo' className="form-check-input" />
+                    <input type="checkbox" id='Termo' name='Termo' className="form-check-input" />
                     <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
                   </div>  
 
