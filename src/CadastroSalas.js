@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import GlobalStyle from './styles/global'
+import { Container, Content } from './styles'
+import Upload from './componentes/Upload'
 import './App.css'
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.css'
@@ -20,7 +23,7 @@ class CadastroSalas extends Component {
         //Valida campos vazios
 
         if (
-            campos.nome == '' ||
+            campos.nomesala == '' ||
             campos.metragem == '' ||
             campos.capaidacde == '' ||
             campos.logradouro == '' ||
@@ -29,6 +32,7 @@ class CadastroSalas extends Component {
             campos.cidade == '' ||
             campos.estado == '' ||
             campos.complemento == '' ||
+            campos.recursos == '' ||
             campos.cep == '' ||
             campos.locador == '') {
             return { 'IsValid': false, 'msg': "Todos os campos são obrigatórios" }
@@ -40,47 +44,62 @@ class CadastroSalas extends Component {
             <form className="centro" type="POST" id="formSalas">
                 <div className="formulario">
                     <div className="form-group">
-                        <label htmlFor="nome">Nome:</label>
-                        <input type="text" className="form-control" id="nome" placeholder="Digite o nome..." required />
+                        <label htmlFor="nome">Nome da sala</label>
+                        <input type="text" className="form-control" id="nomesala" placeholder="Digite o nome da sala..." required />
+                    </div>
+
+
+                    <div className="form-group">
+                        <label htmlFor="Metragem">Tamanho</label>
+                        <input type="text" className="form-control" id="metragem" placeholder="Digite o tamanho em metros quadrados..." required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="Metragem">Metragem</label>
-                        <input type="text" className="form-control" id="metragem" placeholder="Digite a metragem..." required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="cpf">Capacidade</label>
+                        <label htmlFor="capacidade">Capacidade</label>
                         <input type="text" className="form-control" id="capacidade" placeholder="Digite a capacidade..." required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="logradouro">Logradouro</label>
-                        <input type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..." />
+                        <input type="text" className="form-control" id="logradouro" placeholder="Digite o logradouro..." />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="telefone">Número</label>
+                        <label htmlFor="numero">Número</label>
                         <input type="number" className="form-control" id="numero" placeholder="Digite o número..." />
                     </div>
                     <div className="form-group">
                         <label htmlFor="bairro">Bairro</label>
-                        <input type="text" className="form-control" id="bairro" placeholder="Digite o Bairro..." />
+                        <input type="text" className="form-control" id="bairro" placeholder="Digite o bairro..." />
                     </div>
                     <div className="form-group">
                         <label htmlFor="Cidade">Cidade</label>
-                        <input type="text" className="form-control" id="cidade" placeholder="Digite a Cidade..." />
+                        <input type="text" className="form-control" id="cidade" placeholder="Digite a cidade..." />
                     </div>
                     <div className="form-group">
                         <label htmlFor="estado">Estado</label>
-                        <input type="text" className="form-control" id="estado" placeholder="Digite o Estado..." />
+                        <input type="text" className="form-control" id="estado" placeholder="Digite o estado..." />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="DataNasc">Complemento</label>
+                        <label htmlFor="complemento">Complemento</label>
                         <input type="text" className="form-control" id="complemento" placeholder="Digite o complemento..." />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="recursos">Recursos Adicionais</label>
+                        <input type="text" className="form-control" id="recursos" placeholder="Sua sala possui recursos? Exemplo: Projetor, Televisão, Quadro" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="CEP">CEP</label>
                         <input type="text" className="form-control" id="cep" placeholder="Digite o CEP..." />
                     </div>
+
+                    <Container>
+                        <Content>
+                            <Upload />
+                        </Content>
+                        <GlobalStyle />
+                    </Container>
+                    <button type="submit" className="btn btn-primary">Cadastrar Sala</button>
                 </div>
                 <ToastContainer />
+
             </form>
         );
     }
