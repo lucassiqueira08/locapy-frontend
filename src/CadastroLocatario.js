@@ -160,7 +160,7 @@ class CadastroLocatario extends Component {
             return<div className="form-group">
               <label htmlFor="CepLabel">Cep</label>
               <InputMask className="form-control" placeholder="Digite o Cep" id="cep" onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
-     
+
             </div>
           }}
         </ViaCep>
