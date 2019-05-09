@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
 //JQUERY
@@ -15,6 +16,14 @@ import ViaCep from '../tools/ViaCep.js';
 toast.configure()
 
 class CadastroLocatario extends Component {
+    state = {
+        toIndex: false,
+    }
+    redirectToIndex(){
+        setTimeout(()=>{this.setState(() => ({
+            toIndex: true
+        }))},5000);
+    }
     ValidaCampos(campos){
         //Valida campos vazios
         if(campos.nome == ''
@@ -80,39 +89,47 @@ class CadastroLocatario extends Component {
         if (valid){
             axios.post(url, data, header)
             .then(response => { 
-            toast.success("Locatario cadastrado com sucesso!");        
-            $('#formLocatario').trigger("reset");
-        })
+                toast.success("Locatario cadastrado com sucesso!");        
+                debugger;
+                this.redirectToIndex();
+            })
             .catch(error => {
-            var errorResponse = JSON.parse(JSON.stringify(error));
-            var errorMessages = [];
-            console.log(errorResponse);
-            debugger;
-            if(errorResponse.response.status == 400){
-                if(errorResponse.response.data.cpf){
-                errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
-                toast.error("cpf: " + errorResponse.response.data.cpf[0]);
+                try{
+                    var errorResponse = JSON.parse(JSON.stringify(error));
+                    var errorMessages = [];
+                    console.log(errorResponse);
+                    debugger;
+                    if(!errorResponse.response || errorResponse.response.status == 500){
+                        errorMessages.push("Erro interno no servidor...");
+                    }
+                    else if(errorResponse.response.status == 400){
+                        if(errorResponse.response.data.cpf){
+                            errorMessages.push("cpf: " + errorResponse.response.data.cpf[0]);
+                            toast.error("cpf: " + errorResponse.response.data.cpf[0]);
+                        }
+                        if(errorResponse.response.data.perfil){
+                            if(errorResponse.response.data.perfil.usuario.username){
+                                errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
+                            }
+                            if(errorResponse.response.data.perfil.usuario.email){
+                                errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
+                            }
+                        }
+                    }
+                    errorMessages.forEach(element => {
+                        toast.error(element);
+                    });
                 }
-            if(errorResponse.response.data.perfil.usuario.username){
-                errorMessages.push("Usuario: " + errorResponse.response.data.perfil.usuario.username[0]);   
-            }
-            if(errorResponse.response.data.perfil.usuario.email){
-                errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0]);
+                catch{
+                    errorMessages.push("Erro interno...");
                 }
-            }
-            else if(errorResponse.response.status == 500){
-                errorMessages.push("Erro interno no servidor...");
-            }
-            errorMessages.forEach(element => {
-                toast.error(element);
                 });
-            });
+            }
+            else{
+                toast.error(valid.msg);
+            }
         }
-        else{
-            toast.error(valid.msg);
-        }
-    }
-
+        
     componentDidMount(){
         toast.configure({
             autoClose: 5000,
@@ -137,6 +154,9 @@ class CadastroLocatario extends Component {
         this.setState({logradouro:cepData.logradouro, cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
     }
     render() {
+        if (this.state.toIndex === true) {
+          return <Redirect to='/' />
+        }
         return (
             <div className="form">
                 <div className="row">
