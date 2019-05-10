@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
-
-* {
+*{
   box-sizing: border-box;
 }
 body {
@@ -9,12 +8,7 @@ body {
   font-weight: 300;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-weight: 300;
 }
 
@@ -419,7 +413,7 @@ body .loginpage {
   background-color: #DBDBDB;
 }
 
-.form input:focus {
+.form input[type="text"]:focus {
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
@@ -480,12 +474,6 @@ body .loginpage {
   border: 1px solid #A9A9A9; /*adiciona borda*/
 }
 
-@media screen and (max-width: 368px) {
-  .imagemusu.smallResolution{
-      min-height: auto;
-  }
-}
-
 .form-control:focus { 
   outline: none !important;
   border-color: #719ECE;
@@ -525,7 +513,7 @@ label {
 }
 
 input[type=checkbox] {
-	-webkit-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
   box-sizing:border-box;
   width:13px;
@@ -542,5 +530,33 @@ input[type=checkbox]:checked + label {
   font-style: normal;
 } 
 
+@media screen and (max-width: 368px) {
+  .imagemusu.smallResolution{
+      min-height: auto;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .usu input{
+    width: 90%;
+  }
+  .usu label{
+    margin-left: 10%;
+  }
+  .userDiv{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+@media screen and (max-width: 1230px) {
+  .formBox{
+    width: 80%!important;
+    -webkit-flex: inherit; 
+    flex: inherit;
+    max-width: inherit;
+  }
+}
 /* --------------------- FIM ---------------------- */
 

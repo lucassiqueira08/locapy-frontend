@@ -91,6 +91,7 @@ class CadastroLocador extends Component {
           var errorResponse = JSON.parse(JSON.stringify(error));
           var errorMessages = [];
           
+          debugger;
           if(!errorResponse.response || errorResponse.response.status == 500){
             errorMessages.push("Erro interno no servidor...");
           }
@@ -134,7 +135,7 @@ class CadastroLocador extends Component {
         <div className='form'>
           <div className="row">
           <div className="col-lg-2"></div>
-            <div className="col-lg-8">
+            <div className="col-lg-8 formBox">
               <div className="register-form">
                 <form type="POST" id="formLocador">
                   <div className="row">
@@ -144,25 +145,33 @@ class CadastroLocador extends Component {
                     <div className="col-md-8">
                       <div className="form-group usu">   
                         <label htmlFor="usuario">Usuário</label>                     
-                        <InputMask className="form-control" guide={true}id="usuario" placeholder="Digite o nome de usuário..." required/>
+                        <div className="userDiv">
+                          <InputMask className="form-control" guide={true}id="usuario" placeholder="Digite o nome de usuário..." required/>
+                        </div>
                         
                       </div>
                       
                       <div className="form-group usu">
                         <label htmlFor="email">E-mail</label>                        
-                        <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite o Email..." required/>
+                        <div className="userDiv">
+                          <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite o Email..." required/>
+                        </div>
                         
                       </div>   
 
                       <div className="form-group usu"> 
                         <label htmlFor="senha">Senha</label>                        
-                        <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite a Senha..." required/>
+                        <div className="userDiv">
+                          <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite a Senha..." required/>
+                        </div>
                         
                       </div>
 
                       <div className="form-group usu">   
                         <label htmlFor="senha">Confirma Senha</label>                      
-                        <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite novamente a Senha..." required/>
+                        <div className="userDiv">
+                          <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite novamente a Senha..." required/>
+                        </div>
                         
                       </div>
 
