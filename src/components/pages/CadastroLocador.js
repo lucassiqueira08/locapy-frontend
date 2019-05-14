@@ -220,12 +220,8 @@ class CadastroLocador extends Component {
                     <label className="form-check-label" htmlFor="Termo">Eu li e concordo com os termos de uso</label>
                   </div>  
 
-                  <hr></hr>
-                  <div className="row">
-                    <div className="col-md-10 mb-3"></div>
-                    <div className="col-md-2 mb-3">         
+                  <div className="buttonSection">
                       <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocador(e)}>Cadastrar</button>
-                    </div>
                   </div>
                   <ToastContainer />
                 </form>

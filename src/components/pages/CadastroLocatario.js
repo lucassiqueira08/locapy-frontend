@@ -237,10 +237,9 @@ class CadastroLocatario extends Component {
                                     <input type="checkbox" id='Termo' name='Termo' className="form-check-input" />
                                     <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
                                 </div>
-                                <hr className="mb-4"></hr>
                                 <div className="buttonSection">
-                                        <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
-                                </div>
+                                    <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
+                                </div> 
                                 <ToastContainer />
                             </form>
                     </div>
