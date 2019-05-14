@@ -133,22 +133,19 @@ class CadastroLocador extends Component {
     return (
       <body>
         <div className='form'>
-          <div className="row">
-          <div className="col-lg-2"></div>
-            <div className="col-lg-8 formBox">
+          <div className="conteudoForm formBox">
               <div className="register-form">
                 <form type="POST" id="formLocador">
-                  <div className="row">
-                    <div className="col-md-4">
-                        <div className="imagemusu img-circle"></div>             
-                    </div>
-                    <div className="col-md-8">
+                 <div className="userSection">
+                    <button className="imagemusu">
+                        <div></div>
+                    </button>            
+                    <div className="inputUserSection">
                       <div className="form-group usu">   
                         <label htmlFor="usuario">Usuário</label>                     
                         <div className="userDiv">
                           <InputMask className="form-control" guide={true}id="usuario" placeholder="Digite o nome de usuário..." required/>
                         </div>
-                        
                       </div>
                       
                       <div className="form-group usu">
@@ -234,9 +231,7 @@ class CadastroLocador extends Component {
                 </form>
               </div>
             </div>
-          <div className="col-lg-2"></div>
           </div>
-        </div>
       </body>
     );
   }

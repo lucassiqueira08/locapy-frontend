@@ -543,21 +543,18 @@ input[type=checkbox]:checked + label {
   flex-direction: row;
   align-items: center; 
 }
-
+.formBox{
+  width: 80%!important;
+  -webkit-flex: inherit; 
+  flex: inherit;
+  max-width: inherit;
+}
 @media screen and (max-width: 1400px) {
   .bordasForm{
     max-width: 50px;
   }
   .conteudoForm{
     max-width: 1000px;
-  }
-}
-@media screen and (max-width: 1230px) {
-  .formBox{
-    width: 80%!important;
-    -webkit-flex: inherit; 
-    flex: inherit;
-    max-width: inherit;
   }
 }
 @media screen and (max-width: 1050px) {
