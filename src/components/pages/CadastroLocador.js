@@ -25,7 +25,6 @@ class CadastroLocador extends Component {
     }))},5000);
   }
   ValidaCampos(campos){
-    //debugger;
     //Valida campos vazios
     if( campos.nome_fantasia === '' ||
         campos.razao_social === '' ||
@@ -54,7 +53,6 @@ class CadastroLocador extends Component {
   
   PostLocador(e){    
     e.preventDefault();
-    // debugger;
     var url = 'http://localhost:8000/cadastro/locador/';
     var data = {};
     var header = {
@@ -83,7 +81,6 @@ class CadastroLocador extends Component {
       axios.post(url, data, header)
       .then(response => { 
         toast.success("Locador cadastrado com sucesso!");
-        debugger;
         this.redirectToIndex();
       })
       .catch(error => {
@@ -91,7 +88,6 @@ class CadastroLocador extends Component {
           var errorResponse = JSON.parse(JSON.stringify(error));
           var errorMessages = [];
           
-          debugger;
           if(!errorResponse.response || errorResponse.response.status == 500){
             errorMessages.push("Erro interno no servidor...");
           }

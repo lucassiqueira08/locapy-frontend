@@ -87,7 +87,6 @@ class CadastroLocatario extends Component {
             axios.post(url, data, header)
             .then(response => { 
                 toast.success("Locatario cadastrado com sucesso!");        
-                debugger;
                 this.redirectToIndex();
             })
             .catch(error => {
@@ -95,7 +94,6 @@ class CadastroLocatario extends Component {
                     var errorResponse = JSON.parse(JSON.stringify(error));
                     var errorMessages = [];
                     console.log(errorResponse);
-                    debugger;
                     if(!errorResponse.response || errorResponse.response.status == 500){
                         errorMessages.push("Erro interno no servidor...");
                     }
@@ -147,7 +145,6 @@ class CadastroLocatario extends Component {
     handleSuccess(cepData) {
         //Setar os dados do viaCep nos campos.
         console.log(cepData);
-        debugger;
         this.setState({logradouro:cepData.logradouro, estado: cepData.uf}).bind(this);
     }
     render() {
