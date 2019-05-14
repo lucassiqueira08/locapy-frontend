@@ -133,9 +133,8 @@ class CadastroLocador extends Component {
     return (
       <body>
         <div className='form'>
-          <div className="conteudoForm formBox">
-              <div className="register-form">
-                <form type="POST" id="formLocador">
+          <div className="conteudoForm">
+                <form className="form-group" type="POST" id="formLocador">
                  <div className="userSection">
                     <button className="imagemusu">
                         <div></div>
@@ -227,7 +226,6 @@ class CadastroLocador extends Component {
                 </form>
               </div>
             </div>
-          </div>
       </body>
     );
   }

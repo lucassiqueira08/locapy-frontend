@@ -239,7 +239,7 @@ class CadastroLocatario extends Component {
                                 </div>
                                 <div className="buttonSection">
                                     <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
-                                </div> 
+                                </div>
                                 <ToastContainer />
                             </form>
                     </div>
