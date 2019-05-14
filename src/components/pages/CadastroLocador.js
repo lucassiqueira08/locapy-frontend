@@ -159,7 +159,7 @@ class CadastroLocador extends Component {
                       <div className="form-group usu"> 
                         <label htmlFor="senha">Senha</label>                        
                         <div className="userDiv">
-                          <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite a Senha..." required/>
+                          <InputMask type="password" className="form-control" mask="" guide={true}id="senha" placeholder="Digite a Senha..." required/>
                         </div>
                         
                       </div>
@@ -167,7 +167,7 @@ class CadastroLocador extends Component {
                       <div className="form-group usu">   
                         <label htmlFor="senha">Confirma Senha</label>                      
                         <div className="userDiv">
-                          <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite novamente a Senha..." required/>
+                          <InputMask type="password" className="form-control" mask="" guide={true}id="senha" placeholder="Digite novamente a Senha..." required/>
                         </div>
                         
                       </div>
