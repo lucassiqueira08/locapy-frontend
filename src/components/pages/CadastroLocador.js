@@ -113,7 +113,7 @@ class CadastroLocador extends Component {
           })
       }
       catch{
-          toast.error("Erro interno...");
+        toast.error("Erro interno...");
       }
       });
     }

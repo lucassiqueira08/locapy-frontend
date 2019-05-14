@@ -161,7 +161,10 @@ body .loginpage {
   border-color: #ff7b39;
   color: #ff7b39;
 }
-
+.buttonSection{
+  display: flex;
+  justify-content: flex-end;
+}
 @media(min-width: 1200px) {
   #left{
     flex: 4;
@@ -408,8 +411,11 @@ body .loginpage {
 
 /* --------------------- FIM ---------------------- */
 /* ----------------- FORM CADASTRO ---------------- */
-
 .form {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #DBDBDB;
 }
 
@@ -441,7 +447,7 @@ body .loginpage {
   background: white;
 }
 
-.register-form {
+.conteudoForm {
   background-color: white;
   border: none;
   padding: 50px;
@@ -463,8 +469,6 @@ body .loginpage {
 
 .imagemusu {
   background: url('../images/foto-padrao.png');
-  margin-left: 23px;
-  margin-top: 20px;
   width: 260px;
   height: 260px;
   background-position: center; /*posisiona a imagem no centro do elemento*/
@@ -493,7 +497,11 @@ label {
 }
 
 .usu {
+  width: 100%;
   padding: 0.3rem;
+}
+.inputUserSection{
+  width: 80%;
 }
 
 .form-group .form-control input {
@@ -529,25 +537,19 @@ input[type=checkbox]:checked + label {
   color: #278317;
   font-style: normal;
 } 
-
-@media screen and (max-width: 368px) {
-  .imagemusu.smallResolution{
-      min-height: auto;
-  }
+.userSection{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
 }
 
 @media screen and (max-width: 1400px) {
-  .usu input{
-    width: 90%;
+  .bordasForm{
+    max-width: 50px;
   }
-  .usu label{
-    margin-left: 10%;
-  }
-  .userDiv{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+  .conteudoForm{
+    max-width: 1000px;
   }
 }
 @media screen and (max-width: 1230px) {
@@ -556,6 +558,42 @@ input[type=checkbox]:checked + label {
     -webkit-flex: inherit; 
     flex: inherit;
     max-width: inherit;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .userSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .inputUserSection {
+    width: 100%;
+}
+  .imagemusu{
+    margin: 0px!important;
+    padding: 0px!important;
+  }
+  .conteudoForm{
+    max-width: 700px;
+    margin:70px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .conteudoForm{
+    padding: 20px;
+    width: 300px;
+  }
+  .imagemusu{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .imagemusu.smallResolution{
+      min-height: auto;
   }
 }
 /* --------------------- FIM ---------------------- */

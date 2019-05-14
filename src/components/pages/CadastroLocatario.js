@@ -159,18 +159,13 @@ class CadastroLocatario extends Component {
         }
         return (
             <div className="form">
-                <div className="row">
-                    <div className="col-lg-2"></div>
-                    <div className="col-lg-8">
-                        <div className="register-form">
+                    <div className="conteudoForm">
                             <form className="form-group" type="POST" id="formLocatario">
-                                <div className="row">
-                                    <div className="col-md-4 mb-3">
-                                        <button className="imagemusu">
-                                            <div></div>
-                                        </button>
-                                    </div>
-                                    <div className="col-md-8 mb-3">
+                                <div className="userSection">
+                                    <button className="imagemusu">
+                                        <div></div>
+                                    </button>
+                                    <div className="inputUserSection">
                                         <div className="form-group usu">
                                             <label htmlFor="usuario">Usuário</label>
                                             <InputMask className="form-control" guide={true} id="usuario" placeholder="Digite um nome de Usuário..." required />
@@ -254,19 +249,13 @@ class CadastroLocatario extends Component {
                                     <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
                                 </div>
                                 <hr className="mb-4"></hr>
-                                <div className="row">
-                                    <div className="col-md-10 mb-3"></div>
-                                    <div className="col-md-2 mb-3">
+                                <div className="buttonSection">
                                         <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
-                                    </div>
                                 </div>
                                 <ToastContainer />
                             </form>
-                        </div>
                     </div>
-                    <div className="col-lg-2"></div>
                 </div>
-            </div>
         );
     }
 }
