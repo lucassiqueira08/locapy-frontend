@@ -157,91 +157,91 @@ class CadastroLocatario extends Component {
         return (
             <div className="form">
                     <div className="conteudoForm">
-                            <form className="form-group" type="POST" id="formLocatario">
-                                <div className="userSection">
-                                    <button className="imagemusu">
-                                        <div></div>
-                                    </button>
-                                    <div className="inputUserSection">
-                                        <div className="form-group usu">
-                                            <label htmlFor="usuario">Usuário</label>
-                                            <InputMask className="form-control" guide={true} id="usuario" placeholder="Digite um nome de Usuário..." required />
-                                        </div>
-                                        <div className="form-group usu">
-                                            <label htmlFor="email">E-mail</label>
-                                            <InputMask className="form-control" type="email" guide={true} id="email" placeholder="Digite seu E-mail..." required />
-                                        </div>
-                                        <div className="form-group usu">
-                                            <label htmlFor="senha">Senha</label>
-                                            <input type="password" className="form-control" id="senha" placeholder="Digite uma Senha..." required/>
-                                        </div>
-                                        <div className="form-group usu">
-                                            <label htmlFor="senha">Confirma Senha</label>
-                                            <input type="password" className="form-control" id="ConfirmaSenha" placeholder="Digite novamente a Senha..." required/>
-                                        </div>
+                        <form className="form-group" type="POST" id="formLocatario">
+                            <div className="userSection">
+                                <button className="imagemusu">
+                                    <div></div>
+                                </button>
+                                <div className="inputUserSection">
+                                    <div className="form-group usu">
+                                        <label htmlFor="usuario">Usuário</label>
+                                        <InputMask className="form-control" guide={true} id="usuario" placeholder="Digite um nome de Usuário..." required />
+                                    </div>
+                                    <div className="form-group usu">
+                                        <label htmlFor="email">E-mail</label>
+                                        <InputMask className="form-control" type="email" guide={true} id="email" placeholder="Digite seu E-mail..." required />
+                                    </div>
+                                    <div className="form-group usu">
+                                        <label htmlFor="senha">Senha</label>
+                                        <input type="password" className="form-control" id="senha" placeholder="Digite uma Senha..." required/>
+                                    </div>
+                                    <div className="form-group usu">
+                                        <label htmlFor="senha">Confirma Senha</label>
+                                        <input type="password" className="form-control" id="ConfirmaSenha" placeholder="Digite novamente a Senha..." required/>
                                     </div>
                                 </div>
-                                <hr className="mb-3"></hr>
-                                <div className="row">
-                                    <div className="form-group col-md-12">
-                                        <label htmlFor="nome">Nome</label>
-                                        <InputMask type="text" className="form-control" id="nome" placeholder="Digite o Nome..." required/>
-                                    </div>
+                            </div>
+                            <hr className="mb-3"></hr>
+                            <div className="row">
+                                <div className="form-group col-md-12">
+                                    <label htmlFor="nome">Nome</label>
+                                    <InputMask type="text" className="form-control" id="nome" placeholder="Digite o Nome..." required/>
                                 </div>
-                                <div className="row">
-                                    <div className="form-group col-md-4">
-                                        <label htmlFor="cpf">CPF</label>
-                                        <InputMask type="text" mask="999.999.999-99" guide={true} className="form-control" id="cpf" placeholder="Digite o CPF..." required/>
-                                    </div>
-                                    <div className="form-group col-md-4">
-                                        <label htmlFor="DataNasc">Data de Nascimento</label>
-                                        <InputMask type="date" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..."/>
-                                    </div>
-                                    <div className="form-group col-md-4">
-                                        <label htmlFor="telefone">Telefone</label>
-                                        <InputMask type="text" mask="(99)99999-9999" guide={true} className="form-control" id="telefone"/>
-                                    </div>
+                            </div>
+                            <div className="row">
+                                <div className="form-group col-md-4">
+                                    <label htmlFor="cpf">CPF</label>
+                                    <InputMask type="text" mask="999.999.999-99" guide={true} className="form-control" id="cpf" placeholder="Digite o CPF..." required/>
                                 </div>
-                                <div className="row">
-                                    <div className="form-group col-md-3">
-                                        <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
-                                            { ({ data, loading, error, fetch }) => {
-                                                if (loading) {
-                                                return <p>Procurando...</p>
-                                                }
-                                                return  <div className="form-group">
-                                                            <label htmlFor="CepLabel">Cep</label>
-                                                            <InputMask className="form-control" placeholder="Digite o Cep" id="cep" onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
-                                                        </div>
-                                                }
+                                <div className="form-group col-md-4">
+                                    <label htmlFor="DataNasc">Data de Nascimento</label>
+                                    <InputMask type="date" className="form-control" id="data_nasc" placeholder="Digite a data de nascimento..."/>
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <label htmlFor="telefone">Telefone</label>
+                                    <InputMask type="text" mask="(99)99999-9999" guide={true} className="form-control" id="telefone"/>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="form-group col-md-3">
+                                    <ViaCep cep={this.state.cep} onSuccess={this.handleSuccess} lazy>
+                                        { ({ data, loading, error, fetch }) => {
+                                            if (loading) {
+                                            return <p>Procurando...</p>
                                             }
-                                        </ViaCep>
-                                    </div>
-                                    <div className="form-group col-md-7">
-                                        <label htmlFor="endereco">Logradouro</label>
-                                        <InputMask type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
-                                    </div>
-                                    <div className="form-group col-md-2">
-                                        <label htmlFor="Numero">Número</label>
-                                        <InputMask type="text" className="form-control"  id="numero"/>
-                                    </div>
+                                            return  <div className="form-group">
+                                                        <label htmlFor="CepLabel">Cep</label>
+                                                        <InputMask className="form-control" placeholder="Digite o Cep" id="cep" onBlur={fetch} onChange={this.handleChangeCep} value={this.state.cep} placeholder="CEP" type="text"/>
+                                                    </div>
+                                            }
+                                        }
+                                    </ViaCep>
                                 </div>
-                                <div className="row">
-                                    <div className="form-group col-md-3">
-                                        <label htmlFor="estado">Estado</label>
-                                        <InputMask type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>
-                                    </div>
+                                <div className="form-group col-md-7">
+                                    <label htmlFor="endereco">Logradouro</label>
+                                    <InputMask type="text" className="form-control" id="logradouro" placeholder="Digite o Logradouro..."/>
                                 </div>
-                                <hr className="mb-4"></hr>
-                                <div className="custom-control custom-checkbox">
-                                    <input type="checkbox" id='Termo' name='Termo' className="form-check-input" />
-                                    <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
+                                <div className="form-group col-md-2">
+                                    <label htmlFor="Numero">Número</label>
+                                    <InputMask type="text" className="form-control"  id="numero"/>
                                 </div>
-                                <div className="buttonSection">
-                                    <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
+                            </div>
+                            <div className="row">
+                                <div className="form-group col-md-3">
+                                    <label htmlFor="estado">Estado</label>
+                                    <InputMask type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>
                                 </div>
-                                <ToastContainer />
-                            </form>
+                            </div>
+                            <hr className="mb-4"></hr>
+                            <div className="custom-control custom-checkbox">
+                                <input type="checkbox" id='Termo' name='Termo' className="form-check-input" />
+                                <label className="form-check-label" htmlFor="termos_de_uso">Eu li e concordo com os termos de uso</label>
+                            </div>
+                            <div className="buttonSection">
+                                <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocatario(e)}>Cadastrar</button>
+                            </div>
+                            <ToastContainer />
+                        </form>
                     </div>
                 </div>
         );
