@@ -27,7 +27,6 @@ class CadastroLocatario extends Component {
     ValidaCampos(campos){
         //Valida campos vazios
         if(campos.nome == ''
-            ,campos.rg == ''
             ,campos.cpf == ''
             ,campos.telefone == ''
             ,campos.cep == ''
@@ -69,8 +68,6 @@ class CadastroLocatario extends Component {
         data.telefone = $('#telefone').val().replace(/[\(\)\.\s-]+/g,"");
         data.logradouro = $('#logradouro').val();
         data.numero = $('#numero').val();
-        data.bairro = $('#bairro').val();
-        data.cidade = $('#cidade').val();
         data.estado = $('#estado').val();
         data.data_nasc = $('#data_nasc').val();
         data.perfil = {
@@ -138,7 +135,7 @@ class CadastroLocatario extends Component {
     constructor(props) 
         {
         super(props);
-        this.state = { cep: '' , cidade: '', bairro: '', estado: ''};
+        this.state = { cep: '' , estado: ''};
         this.handleChangeCep = this.handleChangeCep.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
         }
@@ -151,7 +148,7 @@ class CadastroLocatario extends Component {
         //Setar os dados do viaCep nos campos.
         console.log(cepData);
         debugger;
-        this.setState({logradouro:cepData.logradouro, cidade:cepData.localidade,bairro:cepData.bairro, estado: cepData.uf}).bind(this);
+        this.setState({logradouro:cepData.logradouro, estado: cepData.uf}).bind(this);
     }
     render() {
         if (this.state.toIndex === true) {
@@ -233,14 +230,6 @@ class CadastroLocatario extends Component {
                                     <div className="form-group col-md-3">
                                         <label htmlFor="estado">Estado</label>
                                         <InputMask type="text" className="form-control" value= {this.state.estado}  id="estado" placeholder="Digite o Estado..."/>
-                                    </div>
-                                    <div className="form-group col-md-5">
-                                        <label htmlFor="Cidade">Cidade</label>
-                                        <InputMask type="text" className="form-control" value= {this.state.cidade} id="cidade" placeholder="Digite a Cidade..."/>
-                                    </div>
-                                    <div className="form-group col-md-4">
-                                        <label htmlFor="bairro">Bairro</label>
-                                        <InputMask type="text" className="form-control" value={this.state.bairro}  id="bairro" placeholder="Digite o Bairro..."/>
                                     </div>
                                 </div>
                                 <hr className="mb-4"></hr>
