@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
-
-* {
+*{
   box-sizing: border-box;
 }
 body {
@@ -9,12 +8,7 @@ body {
   font-weight: 300;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-weight: 300;
 }
 
@@ -167,7 +161,10 @@ body .loginpage {
   border-color: #ff7b39;
   color: #ff7b39;
 }
-
+.buttonSection{
+  display: flex;
+  justify-content: flex-end;
+}
 @media(min-width: 1200px) {
   #left{
     flex: 4;
@@ -414,12 +411,15 @@ body .loginpage {
 
 /* --------------------- FIM ---------------------- */
 /* ----------------- FORM CADASTRO ---------------- */
-
 .form {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #DBDBDB;
 }
 
-.form input:focus {
+.form input[type="text"]:focus {
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
@@ -447,7 +447,8 @@ body .loginpage {
   background: white;
 }
 
-.register-form {
+.conteudoForm {  
+  width: 1000px;
   background-color: white;
   border: none;
   padding: 50px;
@@ -469,8 +470,6 @@ body .loginpage {
 
 .imagemusu {
   background: url('../images/foto-padrao.png');
-  margin-left: 23px;
-  margin-top: 20px;
   width: 260px;
   height: 260px;
   background-position: center; /*posisiona a imagem no centro do elemento*/
@@ -478,12 +477,8 @@ body .loginpage {
   background-size: cover;  /*deixa a imagem na proporção*/
   border-radius: 10px;  /*arredonda os cantos*/
   border: 1px solid #A9A9A9; /*adiciona borda*/
-}
+  margin-right: 10px;
 
-@media screen and (max-width: 368px) {
-  .imagemusu.smallResolution{
-      min-height: auto;
-  }
 }
 
 .form-control:focus { 
@@ -505,7 +500,11 @@ label {
 }
 
 .usu {
+  width: 100%;
   padding: 0.3rem;
+}
+.inputUserSection{
+  width: 80%;
 }
 
 .form-group .form-control input {
@@ -525,7 +524,7 @@ label {
 }
 
 input[type=checkbox] {
-	-webkit-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
   box-sizing:border-box;
   width:13px;
@@ -541,6 +540,61 @@ input[type=checkbox]:checked + label {
   color: #278317;
   font-style: normal;
 } 
+.userSection{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+}
+.formBox{
+  width: 80%!important;
+  -webkit-flex: inherit; 
+  flex: inherit;
+  max-width: inherit;
+}
+@media screen and (max-width: 1400px) {
+  .bordasForm{
+    max-width: 50px;
+  }
+  .conteudoForm{
+    max-width: 1000px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .userSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .inputUserSection {
+    width: 100%;
+}
+  .imagemusu{
+    margin: 0px!important;
+    padding: 0px!important;
+  }
+  .conteudoForm{
+    max-width: 700px;
+    margin:70px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .conteudoForm{
+    padding: 20px;
+    width: 300px;
+  }
+  .imagemusu{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+}
 
+@media screen and (max-width: 368px) {
+  .imagemusu.smallResolution{
+      min-height: auto;
+  }
+}
 /* --------------------- FIM ---------------------- */
 

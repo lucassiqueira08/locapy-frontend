@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import '../css/home.css';
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
@@ -11,11 +12,19 @@ import axios from 'axios';
 //Toast message
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 toast.configure()
 
 class CadastroLocador extends Component {
+  state = {
+    toIndex: false,
+  }
+  redirectToIndex(){
+    setTimeout(()=>{this.setState(() => ({
+        toIndex: true
+    }))},5000);
+  }
   ValidaCampos(campos){
-    //debugger;
     //Valida campos vazios
     if( campos.nome_fantasia === '' ||
         campos.razao_social === '' ||
@@ -35,19 +44,15 @@ class CadastroLocador extends Component {
     return {"isValid" : true}
   }
   ValidaTermo(termo){
-    
     if (termo){
       return {"isValid" : true};
     }else{
       return {"isValid" : false,  "msg" : "Você precisa aceitar o termo"};
     }
-
-
   }
   
   PostLocador(e){    
     e.preventDefault();
-    // debugger;
     var url = 'http://localhost:8000/cadastro/locador/';
     var data = {};
     var header = {
@@ -71,34 +76,41 @@ class CadastroLocador extends Component {
     //Validação do termo.
     valid = this.ValidaTermo(CheckTermo); 
 
-
+    
     if (valid.isValid){
       axios.post(url, data, header)
       .then(response => { 
-        toast.success("Locador cadastrado com sucesso!");        
-        $('#formLocador').trigger("reset");
+        toast.success("Locador cadastrado com sucesso!");
+        this.redirectToIndex();
       })
       .catch(error => {
-        var errorResponse = JSON.parse(JSON.stringify(error));
-        var errorMessages = [];
-        
-        if(errorResponse.response.status === 400){
-          if(errorResponse.response.data.cnpj){
-            errorMessages.push("CNPJ: " + errorResponse.response.data.cnpj[0])
+        try{
+          var errorResponse = JSON.parse(JSON.stringify(error));
+          var errorMessages = [];
+          
+          if(!errorResponse.response || errorResponse.response.status == 500){
+            errorMessages.push("Erro interno no servidor...");
           }
-          if(errorResponse.response.data.perfil.usuario.username){
-            errorMessages.push("Username: " + errorResponse.response.data.perfil.usuario.username[0])
+          else if(errorResponse.response.status === 400){
+            if(errorResponse.response.data.cnpj){
+              errorMessages.push("CNPJ: " + errorResponse.response.data.cnpj[0])
+            }
+            if(errorResponse.response.data.perfil){
+              if(errorResponse.response.data.perfil.usuario.username){
+                errorMessages.push("Username: " + errorResponse.response.data.perfil.usuario.username[0])
+              }
+              if(errorResponse.response.data.perfil.usuario.email){
+                errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0])
+              }
+            }
           }
-          if(errorResponse.response.data.perfil.usuario.email){
-            errorMessages.push("E-Mail: " + errorResponse.response.data.perfil.usuario.email[0])
-          }
-        }
-        else if(errorResponse.response.status === 500){
-          errorMessages.push("Erro interno no servidor...")
-        }
-        errorMessages.forEach(element => {
-          toast.error(element);
-        });
+          errorMessages.forEach(element => {
+            toast.error(element);
+          })
+      }
+      catch{
+        toast.error("Erro interno...");
+      }
       });
     }
     else{
@@ -109,46 +121,49 @@ class CadastroLocador extends Component {
     toast.configure({
       autoClose: 5000,
     });   
-    //Metodo que é executado após o componente ser rendenizado
-  }
-  componentWillMount(){
-    //Metodo que é executado antes do componente ser rendenizado
   }
   render() {
+    if (this.state.toIndex === true) {
+      return <Redirect to='/' />
+    }
     return (
       <body>
         <div className='form'>
-          <div className="row">
-          <div className="col-lg-2"></div>
-            <div className="col-lg-8">
-              <div className="register-form">
-                <form type="POST" id="formLocador">
-                  <div className="row">
-                    <div className="col-md-4">
-                        <div className="imagemusu img-circle"></div>             
-                    </div>
-                    <div className="col-md-8">
+          <div className="conteudoForm">
+                <form className="form-group" type="POST" id="formLocador">
+                 <div className="userSection">
+                    <button className="imagemusu">
+                        <div></div>
+                    </button>            
+                    <div className="inputUserSection">
                       <div className="form-group usu">   
                         <label htmlFor="usuario">Usuário</label>                     
-                        <InputMask className="form-control" guide={true}id="usuario" placeholder="Digite o nome de usuário..." required/>
-                        
+                        <div className="userDiv">
+                          <InputMask className="form-control" guide={true}id="usuario" placeholder="Digite o nome de usuário..." required/>
+                        </div>
                       </div>
                       
                       <div className="form-group usu">
                         <label htmlFor="email">E-mail</label>                        
-                        <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite o Email..." required/>
+                        <div className="userDiv">
+                          <InputMask className="form-control" type="email" guide={true}id="email" placeholder="Digite o Email..." required/>
+                        </div>
                         
                       </div>   
 
                       <div className="form-group usu"> 
                         <label htmlFor="senha">Senha</label>                        
-                        <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite a Senha..." required/>
+                        <div className="userDiv">
+                          <InputMask type="password" className="form-control" mask="" guide={true}id="senha" placeholder="Digite a Senha..." required/>
+                        </div>
                         
                       </div>
 
                       <div className="form-group usu">   
                         <label htmlFor="senha">Confirma Senha</label>                      
-                        <InputMask className="form-control" mask="" guide={true}id="senha" placeholder="Digite novamente a Senha..." required/>
+                        <div className="userDiv">
+                          <InputMask type="password" className="form-control" mask="" guide={true}id="senha" placeholder="Digite novamente a Senha..." required/>
+                        </div>
                         
                       </div>
 
@@ -182,7 +197,7 @@ class CadastroLocador extends Component {
                     </div>
                     <div className="form-group col-md-6">
                       <label htmlFor="inscricao_estadual">Inscrição Estadual</label>
-                      <InputMask className="form-control" guide={true}id="inscricao_estadual" placeholder="Digite a inscrição estadual..." required/>
+                      <InputMask maxLength="12" className="form-control" guide={true}id="inscricao_estadual" placeholder="Digite a inscrição estadual..." required/>
                     </div>
                   </div>
 
@@ -200,20 +215,13 @@ class CadastroLocador extends Component {
                     <label className="form-check-label" htmlFor="Termo">Eu li e concordo com os termos de uso</label>
                   </div>  
 
-                  <hr></hr>
-                  <div className="row">
-                    <div className="col-md-10 mb-3"></div>
-                    <div className="col-md-2 mb-3">         
+                  <div className="buttonSection">
                       <button type="submit" className="btn btn-cadastra" onClick={(e) => this.PostLocador(e)}>Cadastrar</button>
-                    </div>
                   </div>
                   <ToastContainer />
                 </form>
               </div>
             </div>
-          <div className="col-lg-2"></div>
-          </div>
-        </div>
       </body>
     );
   }
