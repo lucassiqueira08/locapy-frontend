@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/home.css'
 
-class LoginRegister extends Component {
+class Login extends Component {
     render() {
         return (
             <body className="loginpage">
@@ -33,7 +33,7 @@ class LoginRegister extends Component {
                                     <span>OU</span>
                                 <hr className="bar"/>
                             </div>
-                            <Link className="btn-register" to='/LocadorLocatario'>
+                            <Link className="btn-register" to='/'>
                                 <a >Criar conta</a> 
                             </Link>
                         </div>
@@ -56,4 +56,4 @@ class LoginRegister extends Component {
     }
 }
 
-export default LoginRegister;
+export default Login;
