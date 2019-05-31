@@ -15,20 +15,17 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 toast.configure()
-var CLOUDNARY_URL = 'https://api.cloudinary.com/v1_1/deogideba/upload';
-var CLOUDNARY_UPLOAD_PRESET = 'bdafisca';
-var imgPreview = document.getElementById('img-preview');
+// var CLOUDNARY_URL = 'https://api.cloudinary.com/v1_1/deogideba/upload';
+// var CLOUDNARY_UPLOAD_PRESET = 'bdafisca';
+// var imgPreview = document.getElementById('img-preview');
 
 
-class CadastroSalas extends Component {
-
-      
-    
-    
+class CadastroSala extends Component {
         PostSala(e){    
             e.preventDefault();
-            var fileUpload =  $('#file-upload');
-    //    ENVIAR IMAGEM AO DESTINO NO BACKEND bin Assim como no ControlaPet
+            
+            //    ENVIAR IMAGEM AO DESTINO NO BACKEND bin Assim como no ControlaPet
+            // var fileUpload =  $('#file-upload');
             // var formData = new FormData();
             // formData.append('file', fileUpload[0].files[0]);         
             //  formData.append('upload_preset',CLOUDNARY_UPLOAD_PRESET);
@@ -43,20 +40,15 @@ class CadastroSalas extends Component {
             //  }).then(function(res){
             //      console.log(res);
             //  }).catch(function(err){
-         
             //      console.error(err);
-             
-         
             //  });
-
-
-
 
             var url = 'http://localhost:8000/sala/';
             var data = {};
             var header = {
                 'Content-Type':"application/json",
             }
+
             data.nome = $('#nomesala').val();
             data.metragem = $('#metragem').val();
             data.capacidade = $('#capacidade').val();
@@ -67,38 +59,25 @@ class CadastroSalas extends Component {
             data.estado = $('#estado').val();
             data.cep = $('#cep').val();
             data.locador = 1;
+
             axios.post(url, data, header)
             .then(response => { 
-            toast.success("Sala catalogada com sucesso!");        
-         
-            alert('funfo');
-
-
-             
-       
+                toast.success("Sala catalogada com sucesso!");        
                 $('#formSalas').trigger("reset");
-
-
-        }).catch(error => {
-            var errorResponse = JSON.parse(JSON.stringify(error));
-            var errorMessages = [];
-          
-            debugger;
-        });
-    }
-        
-
+            }).catch(error => {
+                var errorResponse = JSON.parse(JSON.stringify(error));
+                var errorMessages = [];
+            });
+    }      
     
     render() {
         return (
-            <form className="centro" type="POST" id="formSalas">
-                <div className="formulario">
+            <form className="form" type="POST" id="formSala">
+                <div className="conteudoForm">
                     <div className="form-group">
                         <label htmlFor="nome">Nome da sala</label>
                         <input type="text" className="form-control" id="nomesala" placeholder="Digite o nome da sala..." required />
                     </div>
-
-
                     <div className="form-group">
                         <label htmlFor="Metragem">Tamanho</label>
                         <input type="text" className="form-control" id="metragem" placeholder="Digite o tamanho em metros quadrados..." required />
@@ -146,4 +125,4 @@ class CadastroSalas extends Component {
         );
     }
 }
-export default CadastroSalas 
+export default CadastroSala

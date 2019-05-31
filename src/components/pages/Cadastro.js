@@ -24,12 +24,24 @@ class Cadastro extends Component {
                     <div className="box">
                         <div className="content">
                             <h2>02</h2>
-                            <h3>Locatario</h3>
-                            <p>Encontre sua proxima sala de reunião e deixe 
+                            <h3>Locatário</h3>
+                            <p>Encontre sua próxima sala de reunião e deixe 
                                 de lado as complicações !</p>
                             <Link to='/Cadastro/Locatario' className="btn-cadastra">
                                 <a>
                                     CADASTRAR-SE
+                                </a>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="box">
+                        <div className="content">
+                            <h2>03</h2>
+                            <h3>Sala</h3>
+                            <p>Disponibilize sua sala para locatários que buscam salas como a sua!</p>
+                            <Link to='/Cadastro/Sala' className="btn-cadastra">
+                                <a>
+                                    CADASTRAR
                                 </a>
                             </Link>
                         </div>
