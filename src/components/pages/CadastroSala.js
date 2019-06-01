@@ -49,7 +49,7 @@ class CadastroSala extends Component {
                 'Content-Type':"application/json",
             }
 
-            data.nome = $('#nomesala').val();
+            data.nome = $('#nomeSala').val();
             data.metragem = $('#metragem').val();
             data.capacidade = $('#capacidade').val();
             data.logradouro = $('#logradouro').val();
@@ -76,39 +76,39 @@ class CadastroSala extends Component {
                 <div className="conteudoForm">
                     <div className="form-group">
                         <label htmlFor="nome">Nome da sala</label>
-                        <input type="text" className="form-control" id="nomesala" placeholder="Digite o nome da sala..." required />
+                        <InputMask type="text" className="form-control" id="nomeSala" placeholder="Digite o nome da sala..." required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="Metragem">Tamanho</label>
-                        <input type="text" className="form-control" id="metragem" placeholder="Digite o tamanho em metros quadrados..." required />
+                        <InputMask type="text" mask="999m²" className="form-control" id="metragem" placeholder="Digite o tamanho em metros quadrados..." required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="capacidade">Capacidade</label>
-                        <input type="text" className="form-control" id="capacidade" placeholder="Digite a capacidade..." required />
+                        <InputMask type="text" mask="999" className="form-control" id="capacidade" placeholder="Digite a capacidade..." required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="logradouro">Logradouro</label>
-                        <input type="text" className="form-control" id="logradouro" placeholder="Digite o logradouro..." />
+                        <InputMask type="text" className="form-control" id="logradouro" placeholder="Digite o logradouro..." />
                     </div>
                     <div className="form-group">
                         <label htmlFor="numero">Número</label>
-                        <input type="number" className="form-control" id="numero" placeholder="Digite o número..." />
+                        <InputMask type="text" mask="99999" className="form-control" id="numero" placeholder="Digite o número..." />
                     </div>
                     <div className="form-group">
                         <label htmlFor="bairro">Bairro</label>
-                        <input type="text" className="form-control" id="bairro" placeholder="Digite o bairro..." />
+                        <InputMask type="text" className="form-control" id="bairro" placeholder="Digite o bairro..." />
                     </div>
                     <div className="form-group">
                         <label htmlFor="Cidade">Cidade</label>
-                        <input type="text" className="form-control" id="cidade" placeholder="Digite a cidade..." />
+                        <InputMask type="text" className="form-control" id="cidade" placeholder="Digite a cidade..." />
                     </div>
                     <div className="form-group">
                         <label htmlFor="estado">Estado</label>
-                        <input type="text" className="form-control" id="estado" placeholder="Digite o estado..." />
+                        <InputMask type="text" mask="aa" className="form-control" id="estado" placeholder="Digite o estado..." />
                     </div>                
                     <div className="form-group">
                         <label htmlFor="CEP">CEP</label>
-                        <input type="text" className="form-control" id="cep" placeholder="Digite o CEP..." />
+                        <InputMask type="text" mask="99999-999" className="form-control" id="cep" placeholder="Digite o CEP..." />
                     </div>
                    
                     <Container>
