@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/home.css'
 
-class PaginaInicial extends Component {
+class Home extends Component {
     render() {
         return (
             <div>
@@ -16,10 +16,10 @@ class PaginaInicial extends Component {
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
-                                    <Link to='/LocadorLocatario' className="nav-link">CADASTRA</Link>
+                                    <Link to='/Cadastro' className="nav-link">CADASTRA</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/LoginRegister' className="nav-link">ENTRAR</Link>
+                                    <Link to='/Login' className="nav-link">ENTRAR</Link>
                                 </li>
                             </ul>
                         </div>
@@ -47,4 +47,4 @@ class PaginaInicial extends Component {
     }
 }
 
-export default PaginaInicial;
+export default Home;
